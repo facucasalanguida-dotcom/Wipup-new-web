@@ -3,6 +3,7 @@ import { Hero } from "@/components/site/hero";
 import { Showcase } from "@/components/site/showcase";
 import { About } from "@/components/site/about";
 import { Products } from "@/components/site/products";
+import { Interactive3D } from "@/components/site/interactive-3d";
 import { VideoSection } from "@/components/site/video-section";
 import { Testimonials } from "@/components/site/testimonials";
 import { Distributor } from "@/components/site/distributor";
@@ -19,6 +20,7 @@ export default function Home() {
         <Showcase />
         <About />
         <Products />
+        <Interactive3D />
         <VideoSection />
         <Testimonials />
         <Distributor />
