@@ -1,13 +1,15 @@
 "use client";
 
 import { Suspense, lazy } from "react";
-import { ArrowRight, PawPrint } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
 import { Spotlight } from "@/components/ui/spotlight";
 import { Button } from "@/components/ui/button";
 import { Reveal } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
+import { EditorialBadge } from "@/components/motion/editorial-badge";
+import { InViewCanvas } from "@/components/motion/in-view-canvas";
 import { slideInLeft } from "@/lib/motion";
 
 const PetScene = lazy(() => import("@/components/ui/pet-scene").then((m) => ({ default: m.PetScene })));
@@ -22,10 +24,7 @@ export function Interactive3D() {
 
             <div className="flex h-full flex-col lg:flex-row">
               <div className="relative z-10 flex flex-1 flex-col justify-center p-8 lg:p-12">
-                <span className="mb-4 inline-flex w-fit items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white/80">
-                  <PawPrint className="h-4 w-4" aria-hidden="true" />
-                  Experiencia WIPuP
-                </span>
+                <EditorialBadge index="N°05" label="Experiencia WIPuP" tone="dark" className="mb-6" />
                 <h2 className="bg-gradient-to-b from-neutral-50 to-neutral-400 bg-clip-text text-3xl font-bold text-transparent sm:text-4xl lg:text-5xl">
                   Cuidado que se nota, mascotas que lo agradecen
                 </h2>
@@ -46,7 +45,18 @@ export function Interactive3D() {
                 </div>
               </div>
 
-              <div className="relative flex-1">
+              <InViewCanvas
+                className="relative flex-1"
+                fallback={
+                  <div className="flex h-full w-full items-center justify-center">
+                    <span
+                      className="h-10 w-10 animate-spin rounded-full border-4 border-white/20 border-t-primary-light"
+                      role="status"
+                      aria-label="Cargando escena 3D"
+                    />
+                  </div>
+                }
+              >
                 <Suspense
                   fallback={
                     <div className="flex h-full w-full items-center justify-center">
@@ -60,7 +70,7 @@ export function Interactive3D() {
                 >
                   <PetScene />
                 </Suspense>
-              </div>
+              </InViewCanvas>
             </div>
           </Card>
         </Reveal>

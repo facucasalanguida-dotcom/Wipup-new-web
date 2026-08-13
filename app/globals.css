@@ -158,6 +158,42 @@
   .paw-divider {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='16' viewBox='0 0 40 16'%3E%3Ccircle cx='6' cy='8' r='2.4' fill='%23000'/%3E%3C/svg%3E");
   }
+
+  /* Editorial "craft table / cutting mat" grid — fine + bold ruled lines, CSS-only. */
+  .bg-craft-grid {
+    --grid-line: hsl(var(--ink) / 0.07);
+    --grid-line-strong: hsl(var(--ink) / 0.14);
+    background-image: repeating-linear-gradient(0deg, var(--grid-line-strong) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(90deg, var(--grid-line-strong) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 8px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 8px);
+  }
+  .bg-craft-grid-dark {
+    --grid-line: hsl(var(--ink-foreground) / 0.05);
+    --grid-line-strong: hsl(var(--ink-foreground) / 0.1);
+  }
+
+  .bg-vignette {
+    position: relative;
+  }
+  .bg-vignette::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 90% 70% at 50% 40%, transparent 40%, hsl(var(--ink) / 0.35) 100%);
+  }
+
+  .text-display-xl {
+    font-size: clamp(3rem, 9vw, 8.5rem);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1.5px currentColor;
+    color: transparent;
+  }
 }
 
 @layer components {

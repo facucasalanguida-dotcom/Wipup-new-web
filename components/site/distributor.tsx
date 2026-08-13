@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Mail, MessageCircle, PawPrint, Phone } from "lucide-react";
 
 import { Reveal, RevealItem } from "@/components/motion/reveal";
+import { EditorialBadge } from "@/components/motion/editorial-badge";
 import { scaleIn } from "@/lib/motion";
 import {
   DISTRIBUTOR_EMAIL,
@@ -20,6 +21,7 @@ const CHANNELS = [
 export function Distributor() {
   return (
     <section id="distribuidor" className="relative overflow-hidden bg-ink-gradient py-20 lg:py-32">
+      <div className="absolute inset-0 bg-craft-grid bg-craft-grid-dark opacity-60" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true">
         <PawPrint className="absolute top-12 left-[8%] h-20 w-20 rotate-12 text-ink-foreground" />
         <PawPrint className="absolute bottom-16 right-[10%] h-24 w-24 -rotate-12 text-ink-foreground" />
@@ -31,14 +33,14 @@ export function Distributor() {
       />
 
       <div className="container relative">
-        <Reveal className="mb-4 text-center">
-          <span className="font-semibold text-accent">Trabajá con nosotros</span>
-        </Reveal>
-        <Reveal className="mb-12 text-center" variants={scaleIn}>
-          <h2 className="text-3xl font-bold text-ink-foreground sm:text-4xl lg:text-5xl">
-            Distribuidor Oficial de WIPuP
-          </h2>
-        </Reveal>
+        <div className="mb-12 text-center">
+          <EditorialBadge index="N°08" label="Trabajá con nosotros" tone="dark" align="center" className="mb-6" />
+          <Reveal variants={scaleIn}>
+            <h2 className="text-3xl font-bold text-ink-foreground sm:text-4xl lg:text-5xl">
+              Distribuidor Oficial de WIPuP
+            </h2>
+          </Reveal>
+        </div>
 
         <div className="flex flex-col items-center justify-center gap-10 lg:flex-row lg:gap-16">
           <Reveal variants={scaleIn}>

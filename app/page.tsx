@@ -14,11 +14,13 @@ import { WholesaleDialog } from "@/components/site/wholesale-dialog";
 import { WhatsappFab } from "@/components/site/whatsapp-fab";
 import { ScrollProgress } from "@/components/motion/scroll-progress";
 import { BackToTop } from "@/components/motion/back-to-top";
+import { SectionRail } from "@/components/motion/section-rail";
 
 export default function Home() {
   return (
     <>
       <ScrollProgress />
+      <SectionRail />
       <Navbar />
       <main>
         <Hero />

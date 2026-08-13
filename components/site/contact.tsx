@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Reveal, RevealItem } from "@/components/motion/reveal";
 import { Magnetic } from "@/components/motion/magnetic";
+import { EditorialBadge } from "@/components/motion/editorial-badge";
 import { scaleIn, slideInLeft, slideInRight } from "@/lib/motion";
 import {
   CONTACT_EMAIL,
@@ -48,12 +49,14 @@ export function Contact() {
   return (
     <section id="contacto" className="overflow-hidden bg-secondary/40 py-20 lg:py-32">
       <div className="container">
-        <Reveal className="mb-16 text-center">
-          <span className="font-semibold text-primary">Contacto</span>
-          <h2 className="mt-2 text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">
-            ¿Tenés una consulta? Escribinos
-          </h2>
-        </Reveal>
+        <div className="mb-16 text-center">
+          <EditorialBadge index="N°09" label="Contacto" align="center" className="mb-6" />
+          <Reveal>
+            <h2 className="text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">
+              ¿Tenés una consulta? Escribinos
+            </h2>
+          </Reveal>
+        </div>
 
         <div className="grid gap-12 lg:grid-cols-2">
           <Reveal as="div" stagger staggerAmount={0.1} variants={slideInLeft} className="space-y-4">

@@ -8,6 +8,7 @@ import { Download, Ruler } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/motion/reveal";
+import { EditorialBadge } from "@/components/motion/editorial-badge";
 import { staggerContainer, fadeUp, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { PRODUCT_CATEGORIES, type Product } from "@/lib/site-data";
@@ -87,12 +88,14 @@ export function Products() {
   return (
     <section id="productos" className="bg-secondary/40 py-20 lg:py-32">
       <div className="container">
-        <Reveal className="mb-16 text-center">
-          <span className="font-semibold text-primary">Nuestros Productos</span>
-          <h2 className="mt-2 text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">
-            Una línea completa para el bienestar de tu mascota
-          </h2>
-        </Reveal>
+        <div className="mb-16 text-center">
+          <EditorialBadge index="N°04" label="Nuestros productos" align="center" className="mb-6" />
+          <Reveal>
+            <h2 className="text-4xl font-bold leading-[1.02] text-ink sm:text-5xl lg:text-6xl">
+              Una línea completa para el bienestar de tu mascota
+            </h2>
+          </Reveal>
+        </div>
 
         <Reveal className="mb-12 flex flex-wrap justify-center gap-3" variants={fadeUp}>
           {PRODUCT_CATEGORIES.map((category) => (
@@ -136,8 +139,9 @@ export function Products() {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35 }}
           >
-            <div className="mb-10 rounded-3xl border border-border/50 bg-card p-6 shadow-card sm:p-8">
-              <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <div className="relative mb-10 overflow-hidden rounded-3xl border border-border/50 bg-card p-6 shadow-card sm:p-8">
+              <div className="absolute inset-0 bg-craft-grid opacity-50" aria-hidden="true" />
+              <div className="relative flex flex-col items-start gap-4 sm:flex-row sm:items-center">
                 <Image
                   src={active.categoryImage}
                   alt=""

@@ -3,15 +3,16 @@ import { Quote, Star } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Marquee } from "@/components/motion/marquee";
 import { Reveal } from "@/components/motion/reveal";
+import { EditorialBadge } from "@/components/motion/editorial-badge";
 import { TESTIMONIALS } from "@/lib/site-data";
 
 export function Testimonials() {
   return (
     <section className="bg-background py-20 lg:py-32">
       <div className="container mb-16 text-center">
+        <EditorialBadge index="N°07" label="Testimonios" align="center" className="mb-6" />
         <Reveal>
-          <span className="font-semibold text-primary">Testimonios</span>
-          <h2 className="mt-2 text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">Nuestros clientes</h2>
+          <h2 className="text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">Nuestros clientes</h2>
         </Reveal>
       </div>
 

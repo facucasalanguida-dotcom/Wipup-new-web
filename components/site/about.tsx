@@ -3,6 +3,7 @@ import { Award, Leaf, Lightbulb, PawPrint, PiggyBank, Target } from "lucide-reac
 
 import { Reveal, RevealItem } from "@/components/motion/reveal";
 import { Counter } from "@/components/motion/counter";
+import { EditorialBadge } from "@/components/motion/editorial-badge";
 import { fadeUp, scaleIn, slideInLeft, slideInRight } from "@/lib/motion";
 import { STATS, VALUE_PROPS } from "@/lib/site-data";
 
@@ -19,12 +20,14 @@ export function About() {
       </div>
 
       <div className="container">
-        <Reveal className="mb-16 text-center" variants={fadeUp}>
-          <span className="font-semibold text-primary">Sobre Nosotros</span>
-          <h2 className="mt-2 text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">
-            Más de 15 años dedicados con pasión
-          </h2>
-        </Reveal>
+        <div className="mb-16 text-center">
+          <EditorialBadge index="N°03" label="Sobre nosotros" align="center" className="mb-6" />
+          <Reveal variants={fadeUp}>
+            <h2 className="text-4xl font-bold leading-[1.02] text-ink sm:text-5xl lg:text-6xl">
+              Más de 15 años dedicados con pasión
+            </h2>
+          </Reveal>
+        </div>
 
         <div className="grid items-start gap-16 lg:grid-cols-2">
           <Reveal variants={slideInLeft}>
@@ -57,6 +60,7 @@ export function About() {
 
           <Reveal variants={slideInRight} className="space-y-6">
             <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-card-gradient p-8 shadow-elevated transition-transform duration-500 hover:scale-[1.01] lg:p-10">
+              <div className="absolute inset-0 bg-craft-grid opacity-60" aria-hidden="true" />
               <div
                 className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/10 blur-2xl"
                 aria-hidden="true"

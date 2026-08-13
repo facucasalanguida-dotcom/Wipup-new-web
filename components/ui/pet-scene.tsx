@@ -76,7 +76,7 @@ export function PetScene() {
       shadows
       dpr={[1, 1.5]}
       camera={{ position: [0, 0.4, 4.2], fov: 40 }}
-      gl={{ alpha: true, antialias: true }}
+      gl={{ alpha: true, antialias: false }}
     >
       <ambientLight intensity={0.55} />
       <directionalLight position={[3, 4, 4]} intensity={1.4} castShadow />
