@@ -1,30 +1,100 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState, type MouseEvent } from "react";
 import Image from "next/image";
+import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Download, Ruler } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/motion/reveal";
+import { staggerContainer, fadeUp, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
-import { PRODUCT_CATEGORIES } from "@/lib/site-data";
+import { PRODUCT_CATEGORIES, type Product } from "@/lib/site-data";
+
+function ProductCard({ product }: { product: Product }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const mx = useMotionValue(0.5);
+  const my = useMotionValue(0.5);
+  const rotateX = useSpring(useTransform(my, [0, 1], [6, -6]), { stiffness: 220, damping: 22 });
+  const rotateY = useSpring(useTransform(mx, [0, 1], [-6, 6]), { stiffness: 220, damping: 22 });
+  const glowX = useTransform(mx, (v) => `${v * 100}%`);
+  const glowY = useTransform(my, (v) => `${v * 100}%`);
+
+  function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    mx.set((e.clientX - rect.left) / rect.width);
+    my.set((e.clientY - rect.top) / rect.height);
+  }
+
+  function handleMouseLeave() {
+    mx.set(0.5);
+    my.set(0.5);
+  }
+
+  return (
+    <motion.div variants={fadeUp} className="group" style={{ perspective: 900 }}>
+      <motion.div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative overflow-hidden rounded-2xl border border-border/50 bg-card shadow-card transition-shadow duration-300 hover:shadow-elevated"
+      >
+        <motion.div
+          className="pointer-events-none absolute inset-0 z-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background: useTransform(
+              [glowX, glowY],
+              ([gx, gy]) => `radial-gradient(220px circle at ${gx} ${gy}, hsl(var(--primary) / 0.16), transparent 70%)`
+            ),
+          }}
+          aria-hidden="true"
+        />
+        <div className="aspect-[4/3] overflow-hidden bg-muted">
+          <Image
+            src={product.image}
+            alt={product.name}
+            width={480}
+            height={360}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        </div>
+        <div className="relative p-6" style={{ transform: "translateZ(30px)" }}>
+          <h4 className="mb-2 font-semibold text-ink">{product.name}</h4>
+          <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
+          {product.sizes && (
+            <div className="flex flex-wrap gap-2">
+              {product.sizes.map((size) => (
+                <Badge key={size} variant="secondary" className="gap-1">
+                  <Ruler className="h-3 w-3" aria-hidden="true" />
+                  {size}
+                </Badge>
+              ))}
+            </div>
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
 
 export function Products() {
   const [activeId, setActiveId] = useState(PRODUCT_CATEGORIES[0].id);
   const active = PRODUCT_CATEGORIES.find((c) => c.id === activeId) ?? PRODUCT_CATEGORIES[0];
 
   return (
-    <section id="productos" className="bg-secondary/30 py-20 lg:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-16 text-center">
-          <span className="font-medium text-primary">Nuestros Productos</span>
-          <h2 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+    <section id="productos" className="bg-secondary/40 py-20 lg:py-32">
+      <div className="container">
+        <Reveal className="mb-16 text-center">
+          <span className="font-semibold text-primary">Nuestros Productos</span>
+          <h2 className="mt-2 text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">
             Una línea completa para el bienestar de tu mascota
           </h2>
-        </div>
+        </Reveal>
 
-        <div className="mb-12 flex flex-wrap justify-center gap-3">
+        <Reveal className="mb-12 flex flex-wrap justify-center gap-3" variants={fadeUp}>
           {PRODUCT_CATEGORIES.map((category) => (
             <button
               key={category.id}
@@ -32,12 +102,19 @@ export function Products() {
               onClick={() => setActiveId(category.id)}
               aria-pressed={category.id === activeId}
               className={cn(
-                "flex items-center gap-3 rounded-full border-2 px-5 py-3 font-medium transition-all duration-300 cursor-pointer",
+                "relative isolate flex items-center gap-3 rounded-full border-2 px-5 py-3 font-semibold transition-colors duration-300 cursor-pointer",
                 category.id === activeId
-                  ? "border-primary bg-primary text-primary-foreground shadow-md"
+                  ? "border-primary text-primary-foreground"
                   : "border-border bg-card text-foreground hover:border-primary/50"
               )}
             >
+              {category.id === activeId && (
+                <motion.span
+                  layoutId="active-category-pill"
+                  className="absolute inset-0 -z-10 rounded-full bg-primary shadow-glow"
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                />
+              )}
               <Image
                 src={category.categoryImage}
                 alt=""
@@ -49,59 +126,48 @@ export function Products() {
               {category.shortTitle}
             </button>
           ))}
-        </div>
+        </Reveal>
 
-        <div className="mb-10 rounded-3xl border border-border/50 bg-card p-6 shadow-card sm:p-8">
-          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-            <Image
-              src={active.categoryImage}
-              alt=""
-              width={64}
-              height={64}
-              className="h-16 w-16 flex-shrink-0 object-contain"
-              aria-hidden="true"
-            />
-            <div>
-              <h3 className="text-xl font-bold text-foreground sm:text-2xl">{active.title}</h3>
-              <p className="mt-1 text-muted-foreground">{active.description}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {active.products.map((product) => (
-            <Card
-              key={product.name}
-              className="group overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-elevated"
-            >
-              <div className="aspect-[4/3] overflow-hidden bg-muted">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active.id}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.35 }}
+          >
+            <div className="mb-10 rounded-3xl border border-border/50 bg-card p-6 shadow-card sm:p-8">
+              <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
                 <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={480}
-                  height={360}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  src={active.categoryImage}
+                  alt=""
+                  width={64}
+                  height={64}
+                  className="h-16 w-16 flex-shrink-0 object-contain"
+                  aria-hidden="true"
                 />
+                <div>
+                  <h3 className="text-xl font-bold text-ink sm:text-2xl">{active.title}</h3>
+                  <p className="mt-1 text-muted-foreground">{active.description}</p>
+                </div>
               </div>
-              <div className="p-6">
-                <h4 className="mb-2 font-semibold text-foreground">{product.name}</h4>
-                <p className="mb-4 text-sm leading-relaxed text-muted-foreground">{product.description}</p>
-                {product.sizes && (
-                  <div className="flex flex-wrap gap-2">
-                    {product.sizes.map((size) => (
-                      <Badge key={size} variant="secondary" className="gap-1">
-                        <Ruler className="h-3 w-3" aria-hidden="true" />
-                        {size}
-                      </Badge>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </Card>
-          ))}
-        </div>
+            </div>
 
-        <div className="mt-14 flex flex-col items-center gap-4 text-center">
+            <motion.div
+              initial="hidden"
+              animate="show"
+              viewport={viewportOnce}
+              variants={staggerContainer(0.08)}
+              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            >
+              {active.products.map((product) => (
+                <ProductCard key={product.name} product={product} />
+              ))}
+            </motion.div>
+          </motion.div>
+        </AnimatePresence>
+
+        <Reveal variants={fadeUp} className="mt-14 flex flex-col items-center gap-4 text-center">
           <p className="text-muted-foreground">¿Querés ver el catálogo completo con todas las presentaciones?</p>
           <Button variant="hero" size="lg" asChild className="transition-transform duration-300 hover:scale-105">
             <a href="/catalogo-wipup-2025.pdf" download="Catalogo_WIPUP_2025.pdf">
@@ -109,7 +175,7 @@ export function Products() {
               Descargar Catálogo Completo
             </a>
           </Button>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
