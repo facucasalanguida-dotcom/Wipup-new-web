@@ -6,6 +6,7 @@ import { About } from "@/components/site/about";
 import { Products } from "@/components/site/products";
 import { Interactive3D } from "@/components/site/interactive-3d";
 import { VideoSection } from "@/components/site/video-section";
+import { CatRunner } from "@/components/site/cat-runner";
 import { Testimonials } from "@/components/site/testimonials";
 import { Distributor } from "@/components/site/distributor";
 import { Contact } from "@/components/site/contact";
@@ -30,6 +31,7 @@ export default function Home() {
         <Products />
         <Interactive3D />
         <VideoSection />
+        <CatRunner />
         <Testimonials />
         <Distributor />
         <Contact />

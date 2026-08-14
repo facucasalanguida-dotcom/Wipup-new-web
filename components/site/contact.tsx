@@ -56,7 +56,7 @@ export function Contact() {
 
       <div className="container relative">
         <div className="mb-16 text-center">
-          <EditorialBadge index="N°09" label="Contacto" tone="dark" align="center" className="mb-6" />
+          <EditorialBadge index="N°10" label="Contacto" tone="dark" align="center" className="mb-6" />
           <Reveal>
             <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
               ¿Tenés una consulta? <span className="text-gradient-neon">Escribinos</span>

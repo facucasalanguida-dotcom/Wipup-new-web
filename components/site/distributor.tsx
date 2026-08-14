@@ -33,7 +33,7 @@ export function Distributor() {
 
       <div className="container relative z-10">
         <div className="mb-12 text-center">
-          <EditorialBadge index="N°08" label="Trabajá con nosotros" tone="dark" align="center" className="mb-6" />
+          <EditorialBadge index="N°09" label="Trabajá con nosotros" tone="dark" align="center" className="mb-6" />
           <Reveal variants={scaleIn}>
             <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
               Distribuidor <span className="text-gradient-neon">Oficial</span> de WIPuP

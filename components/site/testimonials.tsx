@@ -39,7 +39,7 @@ export function Testimonials() {
       <div className="absolute inset-0 bg-tech-grid opacity-60" aria-hidden="true" />
 
       <div className="container relative mb-16 text-center">
-        <EditorialBadge index="N°07" label="Testimonios" tone="dark" align="center" className="mb-6" />
+        <EditorialBadge index="N°08" label="Testimonios" tone="dark" align="center" className="mb-6" />
         <Reveal>
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
             Nuestros <span className="text-gradient-neon">clientes</span>

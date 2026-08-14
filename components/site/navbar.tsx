@@ -15,6 +15,7 @@ const NAV_LINKS = [
   { name: "Nosotros", href: "#nosotros" },
   { name: "Productos", href: "#productos" },
   { name: "Experiencia", href: "#experiencia" },
+  { name: "Juego", href: "#juego" },
   { name: "Distribuidor", href: "#distribuidor" },
   { name: "Contacto", href: "#contacto" },
 ];
