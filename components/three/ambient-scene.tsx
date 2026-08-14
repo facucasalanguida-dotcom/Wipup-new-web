@@ -18,11 +18,11 @@ function usePrefersReducedMotion() {
 }
 
 const BLOBS = [
-  { position: [-2.6, 0.9, -1] as [number, number, number], scale: 0.85, color: "#F2683A", speed: 1.1 },
-  { position: [2.3, -0.7, -0.6] as [number, number, number], scale: 1.25, color: "#F6B93B", speed: 0.8 },
-  { position: [1.5, 1.5, -2.2] as [number, number, number], scale: 0.55, color: "#0D3A34", speed: 1.4 },
-  { position: [-1.7, -1.3, -1.6] as [number, number, number], scale: 0.7, color: "#F9CB6E", speed: 1.0 },
-  { position: [0.1, 0.3, -2.6] as [number, number, number], scale: 0.45, color: "#F2683A", speed: 1.6 },
+  { position: [-2.6, 0.9, -1] as [number, number, number], scale: 0.85, color: "#2DD4BF", speed: 1.1 },
+  { position: [2.3, -0.7, -0.6] as [number, number, number], scale: 1.25, color: "#6EE7B7", speed: 0.8 },
+  { position: [1.5, 1.5, -2.2] as [number, number, number], scale: 0.55, color: "#0F766E", speed: 1.4 },
+  { position: [-1.7, -1.3, -1.6] as [number, number, number], scale: 0.7, color: "#A7F3D0", speed: 1.0 },
+  { position: [0.1, 0.3, -2.6] as [number, number, number], scale: 0.45, color: "#2DD4BF", speed: 1.6 },
 ];
 
 function Blob({
@@ -90,7 +90,7 @@ export function AmbientScene() {
     <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 6], fov: 45 }} gl={{ alpha: true, antialias: false }}>
       <ambientLight intensity={0.75} />
       <directionalLight position={[3, 4, 4]} intensity={1.1} />
-      <directionalLight position={[-3, -2, -2]} intensity={0.45} color="#F6B93B" />
+      <directionalLight position={[-3, -2, -2]} intensity={0.45} color="#7BE8EE" />
       <MouseParallaxGroup>
         {BLOBS.map((b, i) => (
           <Blob key={i} {...b} reducedMotion={reducedMotion} />

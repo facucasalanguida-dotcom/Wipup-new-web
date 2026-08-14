@@ -12,7 +12,7 @@ const ITEMS = [
 
 export function Ticker() {
   return (
-    <div className="relative z-10 -mt-6 -rotate-1 border-y border-primary/30 bg-gradient-to-r from-primary/15 via-accent/10 to-cyan/15 py-4 shadow-glow backdrop-blur-sm sm:-mt-8 sm:py-5">
+    <div className="relative z-10 -mt-6 -rotate-1 border-y border-primary/30 bg-gradient-to-r from-primary/15 via-accent/10 to-aqua/15 py-4 shadow-glow backdrop-blur-sm sm:-mt-8 sm:py-5">
       <Marquee className="[--duration:42s] [--gap:2.5rem]" pauseOnHover>
         {ITEMS.map((item) => (
           <span

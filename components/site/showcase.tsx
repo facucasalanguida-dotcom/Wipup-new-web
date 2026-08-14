@@ -9,7 +9,7 @@ import { PRODUCT_CATEGORIES } from "@/lib/site-data";
 export function Showcase() {
   return (
     <section className="relative overflow-hidden bg-background pt-8">
-      <RetroGrid className="opacity-40" angle={58} lightLineColor="#F97316" darkLineColor="#F97316" />
+      <RetroGrid className="opacity-40" angle={58} lightLineColor="#2DD4BF" darkLineColor="#2DD4BF" />
 
       <div className="relative">
         <ContainerScroll
@@ -46,7 +46,7 @@ export function Showcase() {
                   width={96}
                   height={96}
                   aria-hidden="true"
-                  className="relative h-16 w-16 object-contain drop-shadow-[0_0_18px_rgba(249,115,22,0.35)] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-3 sm:h-24 sm:w-24"
+                  className="relative h-16 w-16 object-contain drop-shadow-[0_0_18px_rgba(45,212,191,0.4)] transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-3 sm:h-24 sm:w-24"
                 />
                 <span className="relative text-center text-sm font-semibold text-foreground sm:text-base">
                   {category.shortTitle}

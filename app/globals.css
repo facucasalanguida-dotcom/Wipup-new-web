@@ -4,65 +4,67 @@
 
 @layer base {
   :root {
-    /* Deep space base — the site reads as a dark control room, brand colors do the glowing */
-    --background: 200 45% 4%;
-    --foreground: 200 20% 96%;
+    /* Deep-sea base — near-black with a green cast so the aqua accents read as lit metal */
+    --background: 174 42% 5%;
+    --foreground: 165 20% 96%;
 
-    --card: 202 38% 8%;
-    --card-foreground: 200 20% 96%;
+    --card: 176 32% 8%;
+    --card-foreground: 165 20% 96%;
 
-    --popover: 202 38% 8%;
-    --popover-foreground: 200 20% 96%;
+    --popover: 176 32% 8%;
+    --popover-foreground: 165 20% 96%;
 
-    /* Neon coral — WIPuP's brand orange pushed to a glow */
-    --primary: 14 95% 62%;
-    --primary-light: 20 100% 70%;
-    --primary-dark: 12 85% 50%;
-    --primary-foreground: 200 45% 4%;
+    /* Aquamarine — the protagonist, a polished turquoise metal */
+    --primary: 172 66% 50%;
+    --primary-light: 172 78% 66%;
+    --primary-dark: 174 82% 34%;
+    --primary-foreground: 176 60% 6%;
 
-    --secondary: 202 32% 12%;
-    --secondary-foreground: 200 20% 96%;
+    --secondary: 176 28% 12%;
+    --secondary-foreground: 165 20% 96%;
 
-    --muted: 202 28% 14%;
-    --muted-foreground: 200 12% 66%;
+    --muted: 176 24% 14%;
+    --muted-foreground: 168 12% 68%;
 
-    /* Neon gold */
-    --accent: 42 100% 62%;
-    --accent-light: 45 100% 72%;
-    --accent-foreground: 200 45% 4%;
+    /* Pastel mint — the warm end of the green range, replaces the old gold */
+    --accent: 152 70% 68%;
+    --accent-light: 150 76% 78%;
+    --accent-foreground: 176 60% 6%;
 
-    /* Neon cyan — the "future" third color, used sparingly for beams and rims */
-    --cyan: 175 90% 55%;
-    --cyan-foreground: 200 45% 4%;
+    /* Cool aqua — the coldest green, used sparingly for beams and rims */
+    --aqua: 185 80% 68%;
+    --aqua-foreground: 176 60% 6%;
 
-    /* Ink is now the *light* surface, inverted from the previous design */
-    --ink: 200 20% 96%;
-    --ink-light: 200 15% 88%;
-    --ink-foreground: 200 45% 4%;
+    /* Ink is the *light* surface, inverted from the previous design */
+    --ink: 165 20% 96%;
+    --ink-light: 165 15% 88%;
+    --ink-foreground: 174 42% 5%;
 
     --destructive: 0 85% 62%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 200 25% 18%;
-    --input: 200 25% 18%;
-    --ring: 14 95% 62%;
+    --border: 176 22% 18%;
+    --input: 176 22% 18%;
+    --ring: 172 66% 50%;
 
     --radius: 1.25rem;
 
-    --gradient-hero: radial-gradient(ellipse 90% 70% at 20% 0%, hsl(14 95% 40% / 0.28) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 60% at 90% 20%, hsl(42 100% 45% / 0.2) 0%, transparent 55%),
-      radial-gradient(ellipse 80% 80% at 50% 110%, hsl(175 90% 35% / 0.18) 0%, transparent 60%),
+    --gradient-hero: radial-gradient(ellipse 90% 70% at 20% 0%, hsl(172 70% 34% / 0.3) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 60% at 90% 20%, hsl(152 70% 38% / 0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 80% 80% at 50% 110%, hsl(185 80% 34% / 0.2) 0%, transparent 60%),
       hsl(var(--background));
-    --gradient-primary: linear-gradient(135deg, hsl(14 95% 62%) 0%, hsl(30 100% 62%) 50%, hsl(42 100% 62%) 100%);
-    --gradient-neon: linear-gradient(135deg, hsl(14 95% 62%) 0%, hsl(42 100% 62%) 45%, hsl(175 90% 55%) 100%);
-    --gradient-ink: linear-gradient(160deg, hsl(202 40% 9%) 0%, hsl(200 45% 4%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(202 38% 10%) 0%, hsl(202 40% 7%) 100%);
+    /* Extra stops with a bright band in the middle read as brushed metal, not flat colour */
+    --gradient-primary: linear-gradient(135deg, hsl(176 72% 36%) 0%, hsl(172 70% 54%) 35%,
+      hsl(158 78% 80%) 50%, hsl(172 66% 52%) 68%, hsl(180 72% 38%) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(152 70% 68%) 0%, hsl(172 66% 52%) 45%, hsl(185 80% 68%) 100%);
+    --gradient-ink: linear-gradient(160deg, hsl(176 34% 9%) 0%, hsl(174 42% 5%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(176 32% 10%) 0%, hsl(176 34% 7%) 100%);
 
-    --shadow-soft: 0 4px 24px -6px hsl(14 95% 50% / 0.25);
-    --shadow-card: 0 8px 30px -10px hsl(200 60% 2% / 0.8);
-    --shadow-elevated: 0 24px 60px -18px hsl(200 60% 2% / 0.9);
-    --shadow-glow: 0 0 0 1px hsl(14 95% 62% / 0.25), 0 0 30px -4px hsl(14 95% 62% / 0.5);
-    --shadow-glow-cyan: 0 0 0 1px hsl(175 90% 55% / 0.25), 0 0 30px -4px hsl(175 90% 55% / 0.45);
+    --shadow-soft: 0 4px 24px -6px hsl(172 70% 40% / 0.28);
+    --shadow-card: 0 8px 30px -10px hsl(176 60% 2% / 0.8);
+    --shadow-elevated: 0 24px 60px -18px hsl(176 60% 2% / 0.9);
+    --shadow-glow: 0 0 0 1px hsl(172 66% 50% / 0.25), 0 0 30px -4px hsl(172 66% 50% / 0.5);
+    --shadow-glow-aqua: 0 0 0 1px hsl(185 80% 68% / 0.25), 0 0 30px -4px hsl(185 80% 68% / 0.45);
   }
 }
 
@@ -149,14 +151,14 @@
   .glow-primary {
     box-shadow: 0 0 24px -4px hsl(var(--primary) / 0.55);
   }
-  .glow-cyan {
-    box-shadow: 0 0 24px -4px hsl(var(--cyan) / 0.5);
+  .glow-aqua {
+    box-shadow: 0 0 24px -4px hsl(var(--aqua) / 0.5);
   }
   .text-glow {
     text-shadow: 0 0 24px hsl(var(--primary) / 0.55);
   }
-  .text-glow-cyan {
-    text-shadow: 0 0 24px hsl(var(--cyan) / 0.5);
+  .text-glow-aqua {
+    text-shadow: 0 0 24px hsl(var(--aqua) / 0.5);
   }
 
   /* Glass panel used across the futuristic sections */

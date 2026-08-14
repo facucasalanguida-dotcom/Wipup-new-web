@@ -50,7 +50,7 @@ export function Contact() {
     <section id="contacto" className="relative overflow-hidden bg-background py-20 lg:py-32">
       <div className="absolute inset-0 bg-tech-grid opacity-50" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute bottom-0 right-0 h-[28rem] w-[28rem] animate-blob rounded-full bg-cyan/10 blur-3xl"
+        className="pointer-events-none absolute bottom-0 right-0 h-[28rem] w-[28rem] animate-blob rounded-full bg-aqua/10 blur-3xl"
         aria-hidden="true"
       />
 

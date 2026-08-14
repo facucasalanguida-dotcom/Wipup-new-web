@@ -37,11 +37,11 @@ const DRONE_H = 30;
 const BEST_KEY = "wipup-cat-runner-best";
 
 const COLORS = {
-  primary: "#F97316",
-  accent: "#FBBF24",
-  cyan: "#22D3C5",
-  ground: "#1B3A3D",
-  text: "#F2F6F7",
+  primary: "#5EEAD4",
+  accent: "#6EE7B7",
+  aqua: "#14B8A6",
+  ground: "#17403C",
+  text: "#EAF6F3",
 };
 
 type Obstacle = { x: number; w: number; h: number; flying: boolean };
@@ -334,11 +334,11 @@ export function CatRunner() {
     /* ---------- drawing ---------- */
     function drawBackground(c: CanvasRenderingContext2D) {
       const s = g.current;
-      c.fillStyle = "#04191C";
+      c.fillStyle = "#08201D";
       c.fillRect(0, 0, W, H);
 
       // scrolling tech grid
-      c.strokeStyle = "rgba(242,246,247,0.05)";
+      c.strokeStyle = "rgba(234,246,243,0.05)";
       c.lineWidth = 1;
       for (let x = -((s.bgOffset | 0) % 64); x < W; x += 64) {
         c.beginPath();
@@ -355,9 +355,9 @@ export function CatRunner() {
 
       // neon ground
       c.save();
-      c.shadowColor = COLORS.cyan;
+      c.shadowColor = COLORS.aqua;
       c.shadowBlur = 14;
-      c.strokeStyle = COLORS.cyan;
+      c.strokeStyle = COLORS.aqua;
       c.lineWidth = 2;
       c.beginPath();
       c.moveTo(0, GROUND_Y);
@@ -366,7 +366,7 @@ export function CatRunner() {
       c.restore();
 
       // ground speckles
-      c.fillStyle = "rgba(34,211,197,0.35)";
+      c.fillStyle = "rgba(123,232,238,0.35)";
       for (let i = 0; i < 26; i++) {
         const x = (i * 71 - s.bgOffset * 2) % W;
         c.fillRect(x < 0 ? x + W : x, GROUND_Y + 10 + (i % 3) * 9, 12, 2);
@@ -443,7 +443,7 @@ export function CatRunner() {
       c.restore();
 
       // eye
-      c.fillStyle = "#04191C";
+      c.fillStyle = "#08201D";
       c.beginPath();
       c.arc(headX + 4, headY - 2, 2.6, 0, Math.PI * 2);
       c.fill();
@@ -454,9 +454,9 @@ export function CatRunner() {
       for (const o of s.obstacles) {
         const oy = o.flying ? DRONE_Y : GROUND_Y - o.h;
         c.save();
-        c.shadowColor = o.flying ? COLORS.accent : COLORS.cyan;
+        c.shadowColor = o.flying ? COLORS.accent : COLORS.aqua;
         c.shadowBlur = 12;
-        c.fillStyle = o.flying ? COLORS.accent : COLORS.cyan;
+        c.fillStyle = o.flying ? COLORS.accent : COLORS.aqua;
         if (o.flying) {
           // drone: body + flapping wings
           const flap = Math.sin(s.t * 0.5) * 5;
@@ -479,7 +479,7 @@ export function CatRunner() {
           c.beginPath();
           c.roundRect(o.x, oy, o.w, o.h, 5);
           c.fill();
-          c.fillStyle = "#04191C";
+          c.fillStyle = "#08201D";
           c.fillRect(o.x + 5, oy + o.h * 0.35, o.w - 10, 3);
         }
         c.restore();
@@ -496,7 +496,7 @@ export function CatRunner() {
         c.shadowColor = COLORS.accent;
         c.shadowBlur = 16;
         // halo
-        c.strokeStyle = "rgba(251,191,36,0.55)";
+        c.strokeStyle = "rgba(110,231,183,0.55)";
         c.lineWidth = 2;
         c.beginPath();
         c.arc(it.x, it.y + bob, it.r + 5, 0, Math.PI * 2);
@@ -521,7 +521,7 @@ export function CatRunner() {
       c.textAlign = "right";
       c.fillText(String(Math.floor(s.score)).padStart(5, "0"), W - 20, 34);
       c.textAlign = "left";
-      c.fillStyle = "rgba(242,246,247,0.55)";
+      c.fillStyle = "rgba(234,246,243,0.55)";
       c.font = "600 13px ui-sans-serif, system-ui, sans-serif";
       c.fillText(`PRODUCTOS: ${s.picked}`, 20, 33);
     }

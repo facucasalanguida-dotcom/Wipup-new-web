@@ -45,9 +45,9 @@ const config: Config = {
           light: "hsl(var(--accent-light))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        cyan: {
-          DEFAULT: "hsl(var(--cyan))",
-          foreground: "hsl(var(--cyan-foreground))",
+        aqua: {
+          DEFAULT: "hsl(var(--aqua))",
+          foreground: "hsl(var(--aqua-foreground))",
         },
         ink: {
           DEFAULT: "hsl(var(--ink))",
@@ -82,7 +82,7 @@ const config: Config = {
         card: "var(--shadow-card)",
         elevated: "var(--shadow-elevated)",
         glow: "var(--shadow-glow)",
-        "glow-cyan": "var(--shadow-glow-cyan)",
+        "glow-aqua": "var(--shadow-glow-aqua)",
       },
       keyframes: {
         "accordion-down": {

@@ -73,15 +73,15 @@ export function Hero() {
       {/* Layered futuristic backdrop: scan grid → spotlight sweep → particles → meteors */}
       <div className="absolute inset-0 z-0 bg-tech-grid" aria-hidden="true" />
       <Spotlight
-        gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(14, 95%, 62%, .12) 0, hsla(14, 95%, 55%, .04) 50%, transparent 80%)"
-        gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(42, 100%, 62%, .09) 0, hsla(42, 100%, 55%, .03) 80%, transparent 100%)"
-        gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(175, 90%, 55%, .07) 0, hsla(175, 90%, 45%, .03) 80%, transparent 100%)"
+        gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(172, 66%, 55%, .14) 0, hsla(172, 66%, 45%, .05) 50%, transparent 80%)"
+        gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(152, 70%, 68%, .10) 0, hsla(152, 70%, 55%, .04) 80%, transparent 100%)"
+        gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(185, 80%, 68%, .08) 0, hsla(185, 80%, 50%, .03) 80%, transparent 100%)"
       />
       <Particles
         className="absolute inset-0 z-0"
         quantity={90}
         ease={70}
-        color="#F97316"
+        color="#5EEAD4"
         size={0.5}
         staticity={40}
       />
@@ -122,7 +122,7 @@ export function Hero() {
               <span className="inline-block overflow-hidden pb-1 align-bottom">
                 <motion.span variants={wordItem} className="inline-block">
                   <AuroraText
-                    colors={["#F97316", "#FBBF24", "#22D3C5", "#F97316"]}
+                    colors={["#2DD4BF", "#6EE7B7", "#7BE8EE", "#2DD4BF"]}
                     speed={1.2}
                   >
                     tu mascota
@@ -152,8 +152,8 @@ export function Hero() {
             >
               <Magnetic strength={0.3}>
                 <ShimmerButton
-                  shimmerColor="#FBBF24"
-                  background="linear-gradient(135deg, hsl(14 95% 55%), hsl(30 100% 55%))"
+                  shimmerColor="#A7F3D0"
+                  background="linear-gradient(135deg, hsl(176 72% 38%), hsl(168 70% 50%))"
                   className="font-semibold shadow-glow"
                   onClick={() => document.getElementById("productos")?.scrollIntoView({ behavior: "smooth" })}
                 >
@@ -167,7 +167,7 @@ export function Hero() {
                 variant="heroOutline"
                 size="lg"
                 asChild
-                className="border-cyan/40 text-cyan transition-all duration-300 hover:scale-105 hover:bg-cyan hover:text-cyan-foreground"
+                className="border-aqua/40 text-aqua transition-all duration-300 hover:scale-105 hover:bg-aqua hover:text-aqua-foreground"
               >
                 <a href="#nosotros">Conocenos</a>
               </Button>
@@ -208,10 +208,10 @@ export function Hero() {
               <Sparkles className="h-8 w-8 text-accent" aria-hidden="true" />
             </div>
             <div
-              className="absolute bottom-32 -left-4 z-20 animate-float-delayed rounded-full glass p-3 shadow-glow-cyan"
+              className="absolute bottom-32 -left-4 z-20 animate-float-delayed rounded-full glass p-3 shadow-glow-aqua"
               aria-hidden="true"
             >
-              <PawPrint className="h-8 w-8 text-cyan" aria-hidden="true" />
+              <PawPrint className="h-8 w-8 text-aqua" aria-hidden="true" />
             </div>
 
             <motion.div
@@ -254,7 +254,7 @@ export function Hero() {
                     <PawPrint className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-cyan">
+                    <p className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-aqua">
                       Certificación
                     </p>
                     <p className="font-semibold text-foreground">Calidad Premium</p>

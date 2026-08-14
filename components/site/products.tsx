@@ -43,8 +43,8 @@ function ProductCard({ product }: { product: Product }) {
       >
         <MagicCard
           gradientSize={260}
-          gradientFrom="#F97316"
-          gradientTo="#22D3C5"
+          gradientFrom="#2DD4BF"
+          gradientTo="#6EE7B7"
           gradientOpacity={0.22}
           className="overflow-hidden rounded-2xl border border-foreground/10 bg-card/70 p-0 shadow-card backdrop-blur-sm transition-shadow duration-300 hover:shadow-glow"
         >
@@ -70,7 +70,7 @@ function ProductCard({ product }: { product: Product }) {
                   <Badge
                     key={size}
                     variant="secondary"
-                    className="gap-1 border border-cyan/25 bg-cyan/10 text-cyan"
+                    className="gap-1 border border-aqua/25 bg-aqua/10 text-aqua"
                   >
                     <Ruler className="h-3 w-3" aria-hidden="true" />
                     {size}
@@ -158,7 +158,7 @@ export function Products() {
                   alt=""
                   width={64}
                   height={64}
-                  className="h-16 w-16 flex-shrink-0 object-contain drop-shadow-[0_0_18px_rgba(249,115,22,0.4)]"
+                  className="h-16 w-16 flex-shrink-0 object-contain drop-shadow-[0_0_18px_rgba(45,212,191,0.45)]"
                   aria-hidden="true"
                 />
                 <div>
