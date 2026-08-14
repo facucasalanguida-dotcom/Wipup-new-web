@@ -25,13 +25,18 @@ const SOCIALS = [
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-ink pt-16 text-ink-foreground">
+    <footer className="relative overflow-hidden border-t border-primary/20 bg-ink-gradient pt-16 text-foreground">
+      <div className="absolute inset-0 bg-tech-grid opacity-60" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute -top-24 left-1/2 h-72 w-[40rem] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl"
+        aria-hidden="true"
+      />
       <div className="container relative">
         <Reveal as="div" stagger staggerAmount={0.1} className="mb-12 grid gap-10 md:grid-cols-3">
           <RevealItem>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/images/wipup-logo-_H8_HDtR.png" alt="Logo de WIPuP" className="h-16 w-auto invert" />
-            <p className="mt-4 max-w-xs text-sm text-ink-foreground/70">
+            <p className="mt-4 max-w-xs text-sm text-muted-foreground">
               Más de 15 años dedicados con pasión al cuidado y bienestar de las mascotas de toda
               Argentina.
             </p>
@@ -58,7 +63,7 @@ export function Footer() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="group flex w-fit items-center gap-2 text-sm text-ink-foreground/70 transition-colors hover:text-primary-light"
+                  className="group flex w-fit items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary-light"
                 >
                   <PawPrint className="h-3 w-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100" aria-hidden="true" />
                   {link.name}
@@ -72,7 +77,7 @@ export function Footer() {
             <div className="space-y-3">
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="flex items-center gap-2 text-sm text-ink-foreground/70 transition-colors hover:text-primary-light"
+                className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary-light"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
                 {CONTACT_EMAIL}
@@ -81,12 +86,12 @@ export function Footer() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-ink-foreground/70 transition-colors hover:text-primary-light"
+                className="flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary-light"
               >
                 <Instagram className="h-4 w-4" aria-hidden="true" />
                 {INSTAGRAM_HANDLE}
               </a>
-              <p className="flex items-center gap-2 text-sm text-ink-foreground/70">
+              <p className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" aria-hidden="true" />
                 Buenos Aires, Argentina
               </p>
@@ -94,11 +99,11 @@ export function Footer() {
           </RevealItem>
         </Reveal>
 
-        <div className="flex flex-col items-center gap-2 border-t border-ink-foreground/10 py-8 text-center sm:flex-row sm:justify-between sm:text-left">
-          <p className="text-sm text-ink-foreground/50">
+        <div className="flex flex-col items-center gap-2 border-t border-foreground/10 py-8 text-center sm:flex-row sm:justify-between sm:text-left">
+          <p className="text-sm text-muted-foreground/70">
             © {new Date().getFullYear()} WIPuP. Todos los derechos reservados.
           </p>
-          <p className="flex items-center gap-1.5 text-sm text-ink-foreground/50">
+          <p className="flex items-center gap-1.5 text-sm text-muted-foreground/70">
             Hecho con dedicación para tu mascota
             <PawPrint className="h-3.5 w-3.5 text-primary-light" aria-hidden="true" />
           </p>
@@ -107,7 +112,7 @@ export function Footer() {
 
       <span
         aria-hidden="true"
-        className="pointer-events-none block select-none pb-2 text-center font-display text-[19vw] font-bold leading-none tracking-tight text-ink-foreground/[0.05] sm:text-[16vw]"
+        className="pointer-events-none block select-none pb-2 text-center font-display text-[19vw] font-bold leading-none tracking-tight text-foreground/[0.05] sm:text-[16vw]"
       >
         WIPUP
       </span>

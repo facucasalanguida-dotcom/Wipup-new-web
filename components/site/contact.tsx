@@ -47,13 +47,19 @@ export function Contact() {
   }
 
   return (
-    <section id="contacto" className="overflow-hidden bg-secondary/40 py-20 lg:py-32">
-      <div className="container">
+    <section id="contacto" className="relative overflow-hidden bg-background py-20 lg:py-32">
+      <div className="absolute inset-0 bg-tech-grid opacity-50" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 h-[28rem] w-[28rem] animate-blob rounded-full bg-cyan/10 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="container relative">
         <div className="mb-16 text-center">
-          <EditorialBadge index="N°09" label="Contacto" align="center" className="mb-6" />
+          <EditorialBadge index="N°09" label="Contacto" tone="dark" align="center" className="mb-6" />
           <Reveal>
-            <h2 className="text-3xl font-bold text-ink sm:text-4xl lg:text-5xl">
-              ¿Tenés una consulta? Escribinos
+            <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+              ¿Tenés una consulta? <span className="text-gradient-neon">Escribinos</span>
             </h2>
           </Reveal>
         </div>
@@ -63,17 +69,17 @@ export function Contact() {
             {CONTACT_CARDS.map((card) => {
               const content = (
                 <>
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/15 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                     <card.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="font-semibold text-ink">{card.label}</p>
+                    <p className="font-semibold text-foreground">{card.label}</p>
                     <p className="text-muted-foreground">{card.value}</p>
                   </div>
                 </>
               );
               const className =
-                "group flex items-center gap-4 rounded-2xl border border-border/50 bg-card p-6 shadow-card transition-all duration-300 hover:translate-x-2 hover:border-primary/30 hover:shadow-elevated";
+                "group flex items-center gap-4 rounded-2xl glass p-6 shadow-card transition-all duration-300 hover:translate-x-2 hover:border-primary/40 hover:shadow-glow";
 
               return card.href ? (
                 <RevealItem
@@ -98,9 +104,9 @@ export function Contact() {
             variants={slideInRight}
             as="form"
             onSubmit={handleSubmit}
-            className="rounded-2xl border border-border/50 bg-card p-6 shadow-card sm:p-8"
+            className="relative overflow-hidden rounded-2xl glass p-6 shadow-card sm:p-8"
           >
-            <h3 className="mb-6 text-lg font-semibold text-ink">Formulario de Contacto</h3>
+            <h3 className="mb-6 text-lg font-semibold text-foreground">Formulario de Contacto</h3>
             <div className="grid gap-5">
               <div className="grid gap-2">
                 <Label htmlFor="name">Nombre</Label>

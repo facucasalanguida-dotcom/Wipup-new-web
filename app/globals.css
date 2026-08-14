@@ -4,62 +4,65 @@
 
 @layer base {
   :root {
-    /* Warm cream base — feels like a sunlit living room floor, not a hospital white */
-    --background: 33 55% 97%;
-    --foreground: 180 32% 11%;
+    /* Deep space base — the site reads as a dark control room, brand colors do the glowing */
+    --background: 200 45% 4%;
+    --foreground: 200 20% 96%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 180 32% 11%;
+    --card: 202 38% 8%;
+    --card-foreground: 200 20% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 180 32% 11%;
+    --popover: 202 38% 8%;
+    --popover-foreground: 200 20% 96%;
 
-    /* Coral/tangerine primary — the energetic, "let's play" color */
-    --primary: 14 88% 58%;
-    --primary-light: 18 92% 68%;
-    --primary-dark: 12 78% 47%;
-    --primary-foreground: 0 0% 100%;
+    /* Neon coral — WIPuP's brand orange pushed to a glow */
+    --primary: 14 95% 62%;
+    --primary-light: 20 100% 70%;
+    --primary-dark: 12 85% 50%;
+    --primary-foreground: 200 45% 4%;
 
-    --secondary: 33 45% 93%;
-    --secondary-foreground: 180 32% 11%;
+    --secondary: 202 32% 12%;
+    --secondary-foreground: 200 20% 96%;
 
-    --muted: 30 25% 93%;
-    --muted-foreground: 200 12% 40%;
+    --muted: 202 28% 14%;
+    --muted-foreground: 200 12% 66%;
 
-    /* Warm gold accent — stars, badges, highlights */
-    --accent: 42 96% 58%;
-    --accent-light: 45 96% 70%;
-    --accent-foreground: 180 32% 11%;
+    /* Neon gold */
+    --accent: 42 100% 62%;
+    --accent-light: 45 100% 72%;
+    --accent-foreground: 200 45% 4%;
 
-    /* Deep teal ink — dark bands, footer, high-contrast sections */
-    --ink: 174 55% 13%;
-    --ink-light: 172 40% 22%;
-    --ink-foreground: 33 55% 97%;
+    /* Neon cyan — the "future" third color, used sparingly for beams and rims */
+    --cyan: 175 90% 55%;
+    --cyan-foreground: 200 45% 4%;
 
-    --destructive: 0 78% 58%;
+    /* Ink is now the *light* surface, inverted from the previous design */
+    --ink: 200 20% 96%;
+    --ink-light: 200 15% 88%;
+    --ink-foreground: 200 45% 4%;
+
+    --destructive: 0 85% 62%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 28% 88%;
-    --input: 30 28% 88%;
-    --ring: 14 88% 58%;
+    --border: 200 25% 18%;
+    --input: 200 25% 18%;
+    --ring: 14 95% 62%;
 
     --radius: 1.25rem;
 
-    --gradient-hero: radial-gradient(
-        ellipse 80% 60% at 15% 0%,
-        hsl(18 92% 88% / 0.9) 0%,
-        transparent 55%
-      ),
-      radial-gradient(ellipse 70% 60% at 100% 20%, hsl(42 96% 85% / 0.7) 0%, transparent 50%),
+    --gradient-hero: radial-gradient(ellipse 90% 70% at 20% 0%, hsl(14 95% 40% / 0.28) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 60% at 90% 20%, hsl(42 100% 45% / 0.2) 0%, transparent 55%),
+      radial-gradient(ellipse 80% 80% at 50% 110%, hsl(175 90% 35% / 0.18) 0%, transparent 60%),
       hsl(var(--background));
-    --gradient-primary: linear-gradient(135deg, hsl(14 88% 58%) 0%, hsl(30 92% 60%) 50%, hsl(42 96% 58%) 100%);
-    --gradient-ink: linear-gradient(160deg, hsl(174 55% 13%) 0%, hsl(180 48% 9%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(33 40% 98%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(14 95% 62%) 0%, hsl(30 100% 62%) 50%, hsl(42 100% 62%) 100%);
+    --gradient-neon: linear-gradient(135deg, hsl(14 95% 62%) 0%, hsl(42 100% 62%) 45%, hsl(175 90% 55%) 100%);
+    --gradient-ink: linear-gradient(160deg, hsl(202 40% 9%) 0%, hsl(200 45% 4%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(202 38% 10%) 0%, hsl(202 40% 7%) 100%);
 
-    --shadow-soft: 0 4px 24px -6px hsl(14 70% 40% / 0.16);
-    --shadow-card: 0 8px 30px -10px hsl(180 40% 12% / 0.14);
-    --shadow-elevated: 0 24px 60px -18px hsl(180 40% 12% / 0.28);
-    --shadow-glow: 0 0 0 1px hsl(14 88% 58% / 0.12), 0 8px 40px -8px hsl(14 88% 58% / 0.35);
+    --shadow-soft: 0 4px 24px -6px hsl(14 95% 50% / 0.25);
+    --shadow-card: 0 8px 30px -10px hsl(200 60% 2% / 0.8);
+    --shadow-elevated: 0 24px 60px -18px hsl(200 60% 2% / 0.9);
+    --shadow-glow: 0 0 0 1px hsl(14 95% 62% / 0.25), 0 0 30px -4px hsl(14 95% 62% / 0.5);
+    --shadow-glow-cyan: 0 0 0 1px hsl(175 90% 55% / 0.25), 0 0 30px -4px hsl(175 90% 55% / 0.45);
   }
 }
 
@@ -70,6 +73,7 @@
 
   html {
     scroll-behavior: smooth;
+    color-scheme: dark;
   }
 
   body {
@@ -88,8 +92,8 @@
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.25);
-    color: hsl(var(--ink));
+    background: hsl(var(--primary) / 0.35);
+    color: hsl(var(--foreground));
   }
 
   ::-webkit-scrollbar {
@@ -100,12 +104,12 @@
     background: hsl(var(--secondary));
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary) / 0.5);
+    background: hsl(var(--primary) / 0.6);
     border-radius: 999px;
     border: 2px solid hsl(var(--secondary));
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary) / 0.8);
+    background: hsl(var(--primary));
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -125,6 +129,10 @@
     @apply bg-primary-gradient bg-clip-text text-transparent;
   }
 
+  .text-gradient-neon {
+    @apply bg-neon-gradient bg-clip-text text-transparent;
+  }
+
   .bg-hero-gradient {
     background: var(--gradient-hero);
   }
@@ -137,6 +145,28 @@
     background: var(--gradient-card);
   }
 
+  /* Neon glow helpers */
+  .glow-primary {
+    box-shadow: 0 0 24px -4px hsl(var(--primary) / 0.55);
+  }
+  .glow-cyan {
+    box-shadow: 0 0 24px -4px hsl(var(--cyan) / 0.5);
+  }
+  .text-glow {
+    text-shadow: 0 0 24px hsl(var(--primary) / 0.55);
+  }
+  .text-glow-cyan {
+    text-shadow: 0 0 24px hsl(var(--cyan) / 0.5);
+  }
+
+  /* Glass panel used across the futuristic sections */
+  .glass {
+    background: hsl(var(--card) / 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid hsl(var(--foreground) / 0.08);
+  }
+
   .bg-noise {
     position: relative;
   }
@@ -145,7 +175,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.35;
     mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
   }
@@ -155,22 +185,14 @@
     -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
   }
 
-  .paw-divider {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='16' viewBox='0 0 40 16'%3E%3Ccircle cx='6' cy='8' r='2.4' fill='%23000'/%3E%3C/svg%3E");
-  }
-
-  /* Editorial "craft table / cutting mat" grid — fine + bold ruled lines, CSS-only. */
-  .bg-craft-grid {
-    --grid-line: hsl(var(--ink) / 0.07);
-    --grid-line-strong: hsl(var(--ink) / 0.14);
-    background-image: repeating-linear-gradient(0deg, var(--grid-line-strong) 0 1px, transparent 1px 48px),
-      repeating-linear-gradient(90deg, var(--grid-line-strong) 0 1px, transparent 1px 48px),
-      repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 8px),
-      repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 8px);
-  }
-  .bg-craft-grid-dark {
-    --grid-line: hsl(var(--ink-foreground) / 0.05);
-    --grid-line-strong: hsl(var(--ink-foreground) / 0.1);
+  /* Techy scan grid, replaces the old paper "craft grid" */
+  .bg-tech-grid {
+    --grid-line: hsl(var(--foreground) / 0.04);
+    --grid-line-strong: hsl(var(--foreground) / 0.07);
+    background-image: repeating-linear-gradient(0deg, var(--grid-line-strong) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(90deg, var(--grid-line-strong) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 16px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 16px);
   }
 
   .bg-vignette {
@@ -181,7 +203,7 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(ellipse 90% 70% at 50% 40%, transparent 40%, hsl(var(--ink) / 0.35) 100%);
+    background: radial-gradient(ellipse 90% 70% at 50% 40%, transparent 40%, hsl(var(--background)) 100%);
   }
 
   .text-display-xl {
@@ -199,24 +221,6 @@
 @layer components {
   .container {
     @apply mx-auto px-5 sm:px-6 lg:px-8;
-  }
-}
-
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee-reverse {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
   }
 }
 
@@ -290,5 +294,94 @@
   100% {
     transform: scale(1.6);
     opacity: 0;
+  }
+}
+
+/* --- Keyframes required by the MagicUI / Aceternity components --- */
+
+@keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+  }
+}
+
+@keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+  }
+  15%,
+  35% {
+    transform: translateZ(0) rotate(90deg);
+  }
+  65%,
+  85% {
+    transform: translateZ(0) rotate(270deg);
+  }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+  }
+}
+
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+  }
+  25% {
+    background-position: 50% 100%;
+    transform: rotate(5deg) scale(1.1);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: rotate(-3deg) scale(0.95);
+  }
+  75% {
+    background-position: 50% 0%;
+    transform: rotate(3deg) scale(1.05);
+  }
+  100% {
+    background-position: 0% 50%;
+    transform: rotate(-5deg) scale(0.9);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes grid {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }

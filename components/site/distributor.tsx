@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { Mail, MessageCircle, PawPrint, Phone } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
 
+import { BackgroundBeams } from "@/components/ui/background-beams";
 import { Reveal, RevealItem } from "@/components/motion/reveal";
 import { EditorialBadge } from "@/components/motion/editorial-badge";
 import { scaleIn } from "@/lib/motion";
@@ -20,31 +21,29 @@ const CHANNELS = [
 
 export function Distributor() {
   return (
-    <section id="distribuidor" className="relative overflow-hidden bg-ink-gradient py-20 lg:py-32">
-      <div className="absolute inset-0 bg-craft-grid bg-craft-grid-dark opacity-60" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true">
-        <PawPrint className="absolute top-12 left-[8%] h-20 w-20 rotate-12 text-ink-foreground" />
-        <PawPrint className="absolute bottom-16 right-[10%] h-24 w-24 -rotate-12 text-ink-foreground" />
-        <PawPrint className="absolute top-1/2 left-1/2 h-14 w-14 -translate-x-1/2 -translate-y-1/2 rotate-45 text-ink-foreground" />
-      </div>
+    <section
+      id="distribuidor"
+      className="relative overflow-hidden bg-ink-gradient py-20 lg:py-32"
+    >
+      <BackgroundBeams className="opacity-60" />
       <div
-        className="pointer-events-none absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 animate-blob rounded-full bg-primary/25 blur-3xl"
+        className="pointer-events-none absolute -top-32 left-1/2 h-96 w-96 -translate-x-1/2 animate-blob rounded-full bg-primary/20 blur-3xl"
         aria-hidden="true"
       />
 
-      <div className="container relative">
+      <div className="container relative z-10">
         <div className="mb-12 text-center">
           <EditorialBadge index="N°08" label="Trabajá con nosotros" tone="dark" align="center" className="mb-6" />
           <Reveal variants={scaleIn}>
-            <h2 className="text-3xl font-bold text-ink-foreground sm:text-4xl lg:text-5xl">
-              Distribuidor Oficial de WIPuP
+            <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+              Distribuidor <span className="text-gradient-neon">Oficial</span> de WIPuP
             </h2>
           </Reveal>
         </div>
 
         <div className="flex flex-col items-center justify-center gap-10 lg:flex-row lg:gap-16">
           <Reveal variants={scaleIn}>
-            <div className="rounded-2xl bg-white p-6 shadow-elevated transition-all duration-500 hover:scale-105">
+            <div className="rounded-2xl border border-foreground/10 bg-white p-6 shadow-glow transition-all duration-500 hover:scale-105">
               <Image
                 src="/images/daniel-lerman-logo-BUgqba-5.jpg"
                 alt="Daniel Lerman S.R.L."
@@ -64,13 +63,13 @@ export function Distributor() {
                   rel={channel.external ? "noopener noreferrer" : undefined}
                   className="group flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2"
                 >
-                  <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-white/10 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:bg-primary/30">
-                    <channel.icon className="h-8 w-8 text-ink-foreground" aria-hidden="true" />
+                  <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full border border-foreground/10 bg-foreground/5 backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:border-primary/60 group-hover:bg-primary/20 group-hover:shadow-glow">
+                    <channel.icon className="h-8 w-8 text-foreground transition-colors group-hover:text-primary" aria-hidden="true" />
                   </div>
-                  <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-ink-foreground">
+                  <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-foreground">
                     {channel.label}
                   </p>
-                  <p className="break-all text-ink-foreground/70">{channel.value}</p>
+                  <p className="break-all text-muted-foreground">{channel.value}</p>
                 </a>
               </RevealItem>
             ))}

@@ -49,7 +49,7 @@ export function SectionRail() {
             <a key={section.id} href={`#${section.id}`} className="group relative flex items-center">
               <span
                 className={cn(
-                  "pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-md bg-ink px-2.5 py-1 text-xs font-semibold text-ink-foreground opacity-0 shadow-elevated transition-all duration-200",
+                  "pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-md bg-foreground px-2.5 py-1 text-xs font-semibold text-background opacity-0 shadow-elevated transition-all duration-200",
                   "translate-x-1 group-hover:translate-x-0 group-hover:opacity-100"
                 )}
               >
@@ -58,7 +58,7 @@ export function SectionRail() {
               <span
                 className={cn(
                   "relative flex h-3 w-3 items-center justify-center rounded-full border-2 transition-colors duration-300",
-                  isActive ? "border-primary" : "border-ink/25 group-hover:border-primary/60"
+                  isActive ? "border-primary" : "border-foreground/25 group-hover:border-primary/60"
                 )}
                 aria-label={section.label}
               >

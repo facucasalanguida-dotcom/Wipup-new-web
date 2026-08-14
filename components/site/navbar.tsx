@@ -44,7 +44,7 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-[background-color,box-shadow,border-color] duration-300",
         scrolled
-          ? "border-b border-border/60 bg-background/80 shadow-soft backdrop-blur-lg"
+          ? "border-b border-primary/20 bg-background/70 shadow-glow backdrop-blur-xl"
           : "border-b border-transparent bg-transparent"
       )}
     >
@@ -62,13 +62,13 @@ export function Navbar() {
                 width={160}
                 height={160}
                 priority
-                className="h-12 w-auto lg:h-14"
+                className="h-12 w-auto invert lg:h-14"
               />
             </motion.span>
           </Link>
 
           <div
-            className="hidden items-center gap-1 rounded-full border border-border/60 bg-card/60 p-1 backdrop-blur-sm md:flex"
+            className="hidden items-center gap-1 rounded-full border border-foreground/10 bg-card/50 p-1 backdrop-blur-md md:flex"
             onMouseLeave={() => setHovered(null)}
           >
             {NAV_LINKS.map((link) => (
@@ -76,12 +76,12 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 onMouseEnter={() => setHovered(link.name)}
-                className="relative rounded-full px-4 py-2 text-sm font-semibold text-foreground/70 transition-colors duration-200 hover:text-ink"
+                className="relative rounded-full px-4 py-2 text-sm font-semibold text-foreground/70 transition-colors duration-200 hover:text-foreground"
               >
                 {hovered === link.name && (
                   <motion.span
                     layoutId="nav-hover-pill"
-                    className="absolute inset-0 rounded-full bg-primary/12"
+                    className="absolute inset-0 rounded-full bg-primary/20 shadow-glow"
                     transition={{ type: "spring", stiffness: 400, damping: 32 }}
                   />
                 )}
@@ -92,7 +92,7 @@ export function Navbar() {
 
           <div className="hidden md:block">
             <Magnetic strength={0.25}>
-              <Button variant="hero" asChild>
+              <Button variant="hero" asChild className="shadow-glow">
                 <a href={WHOLESALE_FORM_URL} target="_blank" rel="noopener noreferrer">
                   Sumate a WIPuP
                 </a>
@@ -118,7 +118,7 @@ export function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden border-t border-border/50 bg-background/95 backdrop-blur-lg md:hidden"
+            className="overflow-hidden border-t border-primary/20 bg-background/95 backdrop-blur-xl md:hidden"
           >
             <motion.div
               className="container flex flex-col gap-1 py-4"

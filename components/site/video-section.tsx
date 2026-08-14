@@ -9,18 +9,20 @@ import { scaleIn } from "@/lib/motion";
 
 export function VideoSection() {
   return (
-    <section id="videos" className="relative overflow-hidden bg-secondary/40 py-20 lg:py-32">
-      <div className="absolute inset-0 bg-craft-grid opacity-40" aria-hidden="true" />
+    <section id="videos" className="relative overflow-hidden bg-background py-20 lg:py-32">
+      <div className="absolute inset-0 bg-tech-grid opacity-50" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 animate-blob rounded-full bg-primary/10 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 animate-blob rounded-full bg-primary/15 blur-3xl"
         aria-hidden="true"
       />
 
       <div className="container relative">
         <div className="mb-12 text-center">
-          <EditorialBadge index="N°06" label="Mirá WIPuP en acción" align="center" className="mb-6" />
+          <EditorialBadge index="N°06" label="Mirá WIPuP en acción" tone="dark" align="center" className="mb-6" />
           <Reveal>
-            <h2 className="text-3xl font-bold text-ink sm:text-4xl">Nuestros productos en video</h2>
+            <h2 className="text-3xl font-bold text-foreground sm:text-4xl">
+              Nuestros productos <span className="text-gradient-neon">en video</span>
+            </h2>
           </Reveal>
         </div>
 
@@ -30,9 +32,9 @@ export function VideoSection() {
               whileHover={{ rotate: 0, scale: 1.015 }}
               initial={{ rotate: -1.5 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-full max-w-[300px] rounded-[2.75rem] border-[10px] border-ink bg-ink p-1.5 shadow-elevated"
+              className="relative w-full max-w-[300px] rounded-[2.75rem] border-[10px] border-secondary bg-secondary p-1.5 shadow-glow"
             >
-              <div className="absolute left-1/2 top-3 z-10 h-1.5 w-16 -translate-x-1/2 rounded-full bg-ink-light/60" />
+              <div className="absolute left-1/2 top-3 z-10 h-1.5 w-16 -translate-x-1/2 rounded-full bg-foreground/25" />
               <div className="overflow-hidden rounded-[2rem] bg-card">
                 <video
                   src="/videos/wipup-demo.mp4"
@@ -51,7 +53,7 @@ export function VideoSection() {
               whileInView={{ opacity: 1, y: 0, x: "-50%" }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="absolute -top-5 left-1/2 flex items-center gap-2 rounded-full bg-card px-4 py-2 text-sm font-semibold text-ink shadow-elevated"
+              className="absolute -top-5 left-1/2 flex items-center gap-2 rounded-full glass px-4 py-2 text-sm font-semibold text-foreground shadow-glow"
             >
               <PlayCircle className="h-4 w-4 text-primary" aria-hidden="true" />
               Producto real, resultados reales
@@ -62,7 +64,7 @@ export function VideoSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.45, duration: 0.5 }}
-              className="absolute -bottom-4 -right-6 hidden items-center gap-2 rounded-2xl bg-accent px-4 py-3 text-sm font-bold text-ink shadow-elevated sm:flex"
+              className="absolute -bottom-4 -right-6 hidden items-center gap-2 rounded-2xl bg-accent px-4 py-3 text-sm font-bold text-accent-foreground shadow-glow sm:flex"
             >
               <Sparkles className="h-4 w-4" aria-hidden="true" />
               +10K clientes felices

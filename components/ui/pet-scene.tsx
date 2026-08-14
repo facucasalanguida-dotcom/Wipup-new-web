@@ -38,12 +38,12 @@ function PawPrint({ reducedMotion }: { reducedMotion: boolean }) {
       <group ref={group}>
         <mesh position={[0, -0.35, 0]} scale={[1, 0.72, 0.55]} castShadow receiveShadow>
           <sphereGeometry args={[0.68, 48, 48]} />
-          <meshStandardMaterial color="#14523f" roughness={0.35} metalness={0.1} />
+          <meshStandardMaterial color="#F97316" emissive="#F97316" emissiveIntensity={0.35} roughness={0.25} metalness={0.2} />
         </mesh>
         {TOE_POSITIONS.map((pos, i) => (
           <mesh key={i} position={pos} scale={[0.85, 0.85, 0.6]} castShadow receiveShadow>
             <sphereGeometry args={[0.28, 32, 32]} />
-            <meshStandardMaterial color="#14523f" roughness={0.35} metalness={0.1} />
+            <meshStandardMaterial color="#F97316" emissive="#F97316" emissiveIntensity={0.35} roughness={0.25} metalness={0.2} />
           </mesh>
         ))}
       </group>
@@ -63,7 +63,7 @@ function AccentBall({ reducedMotion }: { reducedMotion: boolean }) {
   return (
     <mesh ref={mesh} position={[1.3, 1.6, -0.6]} castShadow>
       <sphereGeometry args={[0.22, 32, 32]} />
-      <meshStandardMaterial color="#e2621c" roughness={0.3} metalness={0.15} />
+      <meshStandardMaterial color="#22D3C5" emissive="#22D3C5" emissiveIntensity={0.4} roughness={0.2} metalness={0.25} />
     </mesh>
   );
 }
@@ -80,7 +80,7 @@ export function PetScene() {
     >
       <ambientLight intensity={0.55} />
       <directionalLight position={[3, 4, 4]} intensity={1.4} castShadow />
-      <directionalLight position={[-3, -1, -2]} intensity={0.35} color="#5fd6b0" />
+      <directionalLight position={[-3, -1, -2]} intensity={0.35} color="#22D3C5" />
       <PawPrint reducedMotion={reducedMotion} />
       <AccentBall reducedMotion={reducedMotion} />
     </Canvas>

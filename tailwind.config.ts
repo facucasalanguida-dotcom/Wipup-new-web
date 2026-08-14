@@ -45,6 +45,10 @@ const config: Config = {
           light: "hsl(var(--accent-light))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        cyan: {
+          DEFAULT: "hsl(var(--cyan))",
+          foreground: "hsl(var(--cyan-foreground))",
+        },
         ink: {
           DEFAULT: "hsl(var(--ink))",
           light: "hsl(var(--ink-light))",
@@ -67,6 +71,7 @@ const config: Config = {
       backgroundImage: {
         "hero-gradient": "var(--gradient-hero)",
         "primary-gradient": "var(--gradient-primary)",
+        "neon-gradient": "var(--gradient-neon)",
         "ink-gradient": "var(--gradient-ink)",
         "card-gradient": "var(--gradient-card)",
         shimmer:
@@ -77,6 +82,7 @@ const config: Config = {
         card: "var(--shadow-card)",
         elevated: "var(--shadow-elevated)",
         glow: "var(--shadow-glow)",
+        "glow-cyan": "var(--shadow-glow-cyan)",
       },
       keyframes: {
         "accordion-down": {
@@ -104,13 +110,18 @@ const config: Config = {
         float: "float 5s ease-in-out infinite",
         "float-delayed": "float-delayed 6s ease-in-out infinite 0.5s",
         "bounce-slow": "bounce-slow 2.5s ease-in-out infinite",
-        marquee: "marquee 28s linear infinite",
-        "marquee-slow": "marquee 55s linear infinite",
-        "marquee-reverse": "marquee-reverse 32s linear infinite",
         blob: "blob-move 14s ease-in-out infinite",
         shimmer: "shimmer 2.5s linear infinite",
         "spin-slow": "spin-slow 18s linear infinite",
         "pulse-ring": "pulse-ring 2.2s cubic-bezier(0.2,0.8,0.4,1) infinite",
+        // Required by the MagicUI / Aceternity components
+        marquee: "marquee var(--duration, 40s) linear infinite",
+        "marquee-vertical": "marquee-vertical var(--duration, 40s) linear infinite",
+        meteor: "meteor 5s linear infinite",
+        "shimmer-slide": "shimmer-slide var(--speed) ease-in-out infinite alternate",
+        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
+        aurora: "aurora 8s ease-in-out infinite alternate",
+        grid: "grid 15s linear infinite",
       },
     },
   },

@@ -1,6 +1,6 @@
 import { PawPrint } from "lucide-react";
 
-import { Marquee } from "@/components/motion/marquee";
+import { Marquee } from "@/components/ui/marquee";
 
 const ITEMS = [
   "CALIDAD PREMIUM",
@@ -12,14 +12,14 @@ const ITEMS = [
 
 export function Ticker() {
   return (
-    <div className="relative z-10 -mt-6 -rotate-1 bg-ink py-4 shadow-elevated sm:-mt-8 sm:py-5">
-      <Marquee speed="slow">
+    <div className="relative z-10 -mt-6 -rotate-1 border-y border-primary/30 bg-gradient-to-r from-primary/15 via-accent/10 to-cyan/15 py-4 shadow-glow backdrop-blur-sm sm:-mt-8 sm:py-5">
+      <Marquee className="[--duration:42s] [--gap:2.5rem]" pauseOnHover>
         {ITEMS.map((item) => (
           <span
             key={item}
-            className="flex items-center gap-3 whitespace-nowrap text-sm font-bold uppercase tracking-wide text-ink-foreground sm:text-base"
+            className="flex items-center gap-3 whitespace-nowrap text-sm font-bold uppercase tracking-[0.15em] text-foreground sm:text-base"
           >
-            <PawPrint className="h-4 w-4 text-primary-light" aria-hidden="true" />
+            <PawPrint className="h-4 w-4 text-primary" aria-hidden="true" />
             {item}
           </span>
         ))}
