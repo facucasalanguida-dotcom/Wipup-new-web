@@ -1,17 +1,21 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Mail, Instagram, Facebook, MapPin, Send } from "lucide-react";
+import { Facebook, Instagram, Mail, MapPin, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Reveal, RevealItem } from "@/components/motion/reveal";
+import { Magnetic } from "@/components/motion/magnetic";
+import { EditorialBadge } from "@/components/motion/editorial-badge";
+import { scaleIn, slideInLeft, slideInRight } from "@/lib/motion";
 import {
   CONTACT_EMAIL,
-  INSTAGRAM_URL,
-  INSTAGRAM_HANDLE,
   FACEBOOK_URL,
+  INSTAGRAM_HANDLE,
+  INSTAGRAM_URL,
   WHATSAPP_URL,
 } from "@/lib/site-data";
 
@@ -43,21 +47,29 @@ export function Contact() {
   }
 
   return (
-    <section id="contacto" className="overflow-hidden bg-secondary/30 py-20 lg:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contacto" className="relative overflow-hidden bg-background py-20 lg:py-32">
+      <div className="absolute inset-0 bg-soft-dots opacity-50" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute bottom-0 right-0 h-[28rem] w-[28rem] animate-blob rounded-full bg-aqua-light/45 blur-3xl"
+        aria-hidden="true"
+      />
+
+      <div className="container relative">
         <div className="mb-16 text-center">
-          <span className="font-medium text-primary">Contacto</span>
-          <h2 className="mt-2 text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            ¿Tenés una consulta? Escribinos
-          </h2>
+          <EditorialBadge index="N°10" label="Contacto" align="center" className="mb-6" />
+          <Reveal>
+            <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
+              ¿Tenés una consulta? <span className="text-gradient-fresh">Escribinos</span>
+            </h2>
+          </Reveal>
         </div>
 
         <div className="grid gap-12 lg:grid-cols-2">
-          <div className="space-y-4">
+          <Reveal as="div" stagger staggerAmount={0.1} variants={slideInLeft} className="space-y-4">
             {CONTACT_CARDS.map((card) => {
               const content = (
                 <>
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-accent-light/70 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                     <card.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
                   <div>
@@ -67,27 +79,33 @@ export function Contact() {
                 </>
               );
               const className =
-                "group flex items-center gap-4 rounded-2xl border border-border/50 bg-card p-6 shadow-card transition-all duration-300 hover:translate-x-2 hover:border-primary/30 hover:shadow-elevated";
+                "group flex items-center gap-4 rounded-2xl glass p-6 shadow-soft transition-all duration-300 hover:translate-x-2 hover:border-primary/30 hover:shadow-card";
 
               return card.href ? (
-                <a
+                <RevealItem
                   key={card.label}
+                  as="a"
                   href={card.href}
                   target={card.href.startsWith("http") ? "_blank" : undefined}
                   rel={card.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className={className}
                 >
                   {content}
-                </a>
+                </RevealItem>
               ) : (
-                <div key={card.label} className={className}>
+                <RevealItem key={card.label} className={className}>
                   {content}
-                </div>
+                </RevealItem>
               );
             })}
-          </div>
+          </Reveal>
 
-          <form onSubmit={handleSubmit} className="rounded-2xl border border-border/50 bg-card p-6 shadow-card sm:p-8">
+          <Reveal
+            variants={slideInRight}
+            as="form"
+            onSubmit={handleSubmit}
+            className="relative overflow-hidden rounded-2xl glass p-6 shadow-card sm:p-8"
+          >
             <h3 className="mb-6 text-lg font-semibold text-foreground">Formulario de Contacto</h3>
             <div className="grid gap-5">
               <div className="grid gap-2">
@@ -119,15 +137,17 @@ export function Contact() {
                   placeholder="Contanos en qué te podemos ayudar"
                 />
               </div>
-              <Button type="submit" variant="hero" size="lg" className="w-full">
-                <Send className="h-4 w-4" aria-hidden="true" />
-                Enviar por WhatsApp
-              </Button>
+              <Magnetic strength={0.15} className="w-full">
+                <Button type="submit" variant="hero" size="lg" className="w-full">
+                  <Send className="h-4 w-4" aria-hidden="true" />
+                  Enviar por WhatsApp
+                </Button>
+              </Magnetic>
               <p className="text-center text-xs text-muted-foreground">
                 Se abrirá WhatsApp con tu mensaje listo para enviar a nuestro equipo.
               </p>
             </div>
-          </form>
+          </Reveal>
         </div>
       </div>
     </section>

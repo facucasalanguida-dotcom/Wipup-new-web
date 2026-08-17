@@ -74,9 +74,9 @@ function Card({
       style={{
         rotateX: rotate,
         scale,
-        boxShadow: "0 30px 60px -20px hsl(200 25% 15% / 0.35)",
+        boxShadow: "0 30px 80px -20px hsl(174 82% 34% / 0.35)",
       }}
-      className="mx-auto h-[24rem] w-full max-w-5xl rounded-[2rem] border-4 border-card bg-primary/10 p-2 shadow-2xl md:h-[32rem] md:p-4"
+      className="mx-auto h-[24rem] w-full max-w-5xl rounded-[2rem] border-4 border-primary/25 bg-card/60 p-2 shadow-2xl backdrop-blur-sm md:h-[32rem] md:p-4"
     >
       <div className="h-full w-full overflow-hidden rounded-2xl bg-muted">{children}</div>
     </motion.div>
