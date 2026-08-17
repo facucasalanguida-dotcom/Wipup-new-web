@@ -27,3 +27,6 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# Export estático para hosting propio (npm run build:static)
+out/
