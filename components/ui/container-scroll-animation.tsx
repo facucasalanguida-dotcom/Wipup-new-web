@@ -74,7 +74,7 @@ function Card({
       style={{
         rotateX: rotate,
         scale,
-        boxShadow: "0 30px 80px -20px hsl(14 95% 50% / 0.35)",
+        boxShadow: "0 30px 80px -20px hsl(174 82% 34% / 0.35)",
       }}
       className="mx-auto h-[24rem] w-full max-w-5xl rounded-[2rem] border-4 border-primary/25 bg-card/60 p-2 shadow-2xl backdrop-blur-sm md:h-[32rem] md:p-4"
     >

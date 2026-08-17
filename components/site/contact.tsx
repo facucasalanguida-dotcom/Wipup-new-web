@@ -48,18 +48,18 @@ export function Contact() {
 
   return (
     <section id="contacto" className="relative overflow-hidden bg-background py-20 lg:py-32">
-      <div className="absolute inset-0 bg-tech-grid opacity-50" aria-hidden="true" />
+      <div className="absolute inset-0 bg-soft-dots opacity-50" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute bottom-0 right-0 h-[28rem] w-[28rem] animate-blob rounded-full bg-aqua/10 blur-3xl"
+        className="pointer-events-none absolute bottom-0 right-0 h-[28rem] w-[28rem] animate-blob rounded-full bg-aqua-light/45 blur-3xl"
         aria-hidden="true"
       />
 
       <div className="container relative">
         <div className="mb-16 text-center">
-          <EditorialBadge index="N°10" label="Contacto" tone="dark" align="center" className="mb-6" />
+          <EditorialBadge index="N°10" label="Contacto" align="center" className="mb-6" />
           <Reveal>
             <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-              ¿Tenés una consulta? <span className="text-gradient-neon">Escribinos</span>
+              ¿Tenés una consulta? <span className="text-gradient-fresh">Escribinos</span>
             </h2>
           </Reveal>
         </div>
@@ -69,7 +69,7 @@ export function Contact() {
             {CONTACT_CARDS.map((card) => {
               const content = (
                 <>
-                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/15 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-accent-light/70 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                     <card.icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   </div>
                   <div>
@@ -79,7 +79,7 @@ export function Contact() {
                 </>
               );
               const className =
-                "group flex items-center gap-4 rounded-2xl glass p-6 shadow-card transition-all duration-300 hover:translate-x-2 hover:border-primary/40 hover:shadow-glow";
+                "group flex items-center gap-4 rounded-2xl glass p-6 shadow-soft transition-all duration-300 hover:translate-x-2 hover:border-primary/30 hover:shadow-card";
 
               return card.href ? (
                 <RevealItem

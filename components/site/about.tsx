@@ -3,7 +3,6 @@ import { Award, Leaf, Lightbulb, PawPrint, PiggyBank, Target } from "lucide-reac
 
 import { Reveal, RevealItem } from "@/components/motion/reveal";
 import { EditorialBadge } from "@/components/motion/editorial-badge";
-import { GlowingEffect } from "@/components/ui/glowing-effect";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { scaleIn, slideInLeft, slideInRight } from "@/lib/motion";
 import { STATS, VALUE_PROPS } from "@/lib/site-data";
@@ -19,15 +18,15 @@ function splitStat(value: string) {
 export function About() {
   return (
     <section id="nosotros" className="relative overflow-hidden bg-background">
-      <div className="absolute inset-0 bg-tech-grid opacity-50" aria-hidden="true" />
+      <div className="absolute inset-0 bg-soft-dots opacity-50" aria-hidden="true" />
 
       <div className="container relative py-20 lg:py-32">
         <div className="mb-16 text-center">
-          <EditorialBadge index="N°03" label="Sobre nosotros" tone="dark" align="center" className="mb-6" />
+          <EditorialBadge index="N°03" label="Sobre nosotros" align="center" className="mb-6" />
           <Reveal>
             <h2 className="mx-auto max-w-4xl text-4xl font-bold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
               Más de 15 años dedicados con{" "}
-              <span className="text-gradient-neon">pasión</span> al bienestar de las mascotas
+              <span className="text-gradient-fresh">pasión</span> al bienestar de las mascotas
             </h2>
           </Reveal>
         </div>
@@ -46,17 +45,9 @@ export function About() {
                 return (
                   <RevealItem
                     key={prop.title}
-                    className="group relative flex gap-4 rounded-2xl border border-foreground/5 p-4 transition-all duration-500 hover:translate-x-2 hover:border-primary/30 hover:bg-primary/5"
+                    className="group relative flex gap-4 rounded-2xl border border-border/70 bg-card/60 p-4 transition-all duration-500 hover:translate-x-2 hover:border-primary/30 hover:bg-primary/[0.06] hover:shadow-soft"
                   >
-                    <GlowingEffect
-                      spread={38}
-                      glow
-                      disabled={false}
-                      proximity={70}
-                      inactiveZone={0.01}
-                      borderWidth={2}
-                    />
-                    <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/15 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
+                    <div className="relative flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-accent-light/70 transition-transform duration-300 group-hover:rotate-6 group-hover:scale-110">
                       <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
                     </div>
                     <div className="relative">
@@ -71,14 +62,14 @@ export function About() {
 
           <Reveal variants={slideInRight} className="space-y-6">
             <div className="relative overflow-hidden rounded-3xl glass p-8 shadow-elevated transition-transform duration-500 hover:scale-[1.01] lg:p-10">
-              <div className="absolute inset-0 bg-tech-grid opacity-60" aria-hidden="true" />
+              <div className="absolute inset-0 bg-soft-dots opacity-60" aria-hidden="true" />
               <div
-                className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary/20 blur-3xl"
+                className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-primary-light/50 blur-3xl"
                 aria-hidden="true"
               />
               <div className="relative flex flex-col gap-6 sm:flex-row">
                 <div className="flex-1">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/15 shadow-glow transition-all duration-300 hover:rotate-12">
+                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-light/70 shadow-soft transition-all duration-300 hover:rotate-12">
                     <Target className="h-7 w-7 text-primary" aria-hidden="true" />
                   </div>
                   <h3 className="mb-4 text-2xl font-bold text-foreground">Nuestra Misión</h3>
@@ -109,13 +100,13 @@ export function About() {
                     variants={scaleIn}
                     className={
                       "relative overflow-hidden rounded-2xl p-5 text-center shadow-card transition-transform duration-300 hover:-translate-y-1 " +
-                      (i === 1 ? "border border-primary/40 bg-primary/10 shadow-glow" : "glass")
+                      (i === 1 ? "border border-primary/25 bg-accent-light/50" : "glass")
                     }
                   >
                     <p
                       className={
                         "text-2xl font-bold sm:text-3xl " +
-                        (i === 1 ? "text-primary text-glow" : "text-foreground")
+                        (i === 1 ? "text-primary" : "text-foreground")
                       }
                     >
                       <NumberTicker value={value} />
@@ -130,7 +121,7 @@ export function About() {
         </div>
 
         <Reveal variants={scaleIn} className="mt-20 flex justify-center">
-          <span className="inline-flex cursor-default items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-6 py-3 font-semibold text-primary shadow-glow transition-colors duration-300 hover:bg-primary/20">
+          <span className="inline-flex cursor-default items-center gap-2 rounded-full border border-primary/20 bg-accent-light/60 px-6 py-3 font-semibold text-primary shadow-soft transition-colors duration-300 hover:bg-accent-light">
             <PawPrint className="h-4 w-4" aria-hidden="true" />
             Miles de mascotas felices
             <PawPrint className="h-4 w-4" aria-hidden="true" />

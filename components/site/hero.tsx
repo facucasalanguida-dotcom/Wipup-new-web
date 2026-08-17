@@ -6,11 +6,7 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { ArrowRight, ChevronDown, PawPrint, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Spotlight } from "@/components/ui/spotlight-new";
-import { Particles } from "@/components/ui/particles";
-import { Meteors } from "@/components/ui/meteors";
 import { AuroraText } from "@/components/ui/aurora-text";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { NumberTicker } from "@/components/ui/number-ticker";
 import { Magnetic } from "@/components/motion/magnetic";
 import { EditorialBadge } from "@/components/motion/editorial-badge";
@@ -70,29 +66,18 @@ export function Hero() {
       id="inicio"
       className="relative isolate min-h-screen overflow-hidden bg-hero-gradient pt-16 lg:pt-20"
     >
-      {/* Layered futuristic backdrop: scan grid → spotlight sweep → particles → meteors */}
-      <div className="absolute inset-0 z-0 bg-tech-grid" aria-hidden="true" />
-      <Spotlight
-        gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(172, 66%, 55%, .14) 0, hsla(172, 66%, 45%, .05) 50%, transparent 80%)"
-        gradientSecond="radial-gradient(50% 50% at 50% 50%, hsla(152, 70%, 68%, .10) 0, hsla(152, 70%, 55%, .04) 80%, transparent 100%)"
-        gradientThird="radial-gradient(50% 50% at 50% 50%, hsla(185, 80%, 68%, .08) 0, hsla(185, 80%, 50%, .03) 80%, transparent 100%)"
-      />
-      <Particles
-        className="absolute inset-0 z-0"
-        quantity={90}
-        ease={70}
-        color="#5EEAD4"
-        size={0.5}
-        staticity={40}
-      />
+      {/* Soft backdrop: dotted paper trama + three slow pastel washes */}
+      <div className="absolute inset-0 z-0 bg-soft-dots opacity-60" aria-hidden="true" />
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-        <Meteors number={14} />
+        <div className="absolute -left-24 top-0 h-[26rem] w-[26rem] animate-blob rounded-full bg-primary-light/40 blur-3xl" />
+        <div className="absolute -right-16 top-24 h-[22rem] w-[22rem] animate-float rounded-full bg-accent-light/50 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-[20rem] w-[20rem] animate-float-delayed rounded-full bg-aqua-light/45 blur-3xl" />
       </div>
 
       {/* Ghost wordmark anchoring the composition */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute -bottom-[4vw] left-1/2 z-0 block -translate-x-1/2 select-none whitespace-nowrap text-outline font-display text-[24vw] font-bold leading-none text-foreground/[0.04] sm:text-[20vw]"
+        className="pointer-events-none absolute -bottom-[4vw] left-1/2 z-0 block -translate-x-1/2 select-none whitespace-nowrap text-outline font-display text-[24vw] font-bold leading-none text-primary/[0.09] sm:text-[20vw]"
       >
         WIPUP
       </span>
@@ -104,7 +89,6 @@ export function Hero() {
               index="N°01"
               label="+15 años cuidando mascotas"
               detail="Calidad certificada en toda Argentina"
-              tone="dark"
               className="mb-8"
             />
 
@@ -122,8 +106,8 @@ export function Hero() {
               <span className="inline-block overflow-hidden pb-1 align-bottom">
                 <motion.span variants={wordItem} className="inline-block">
                   <AuroraText
-                    colors={["#2DD4BF", "#6EE7B7", "#7BE8EE", "#2DD4BF"]}
-                    speed={1.2}
+                    colors={["#2F7D6F", "#4E9B74", "#3C8A99", "#2F7D6F"]}
+                    speed={1}
                   >
                     tu mascota
                   </AuroraText>
@@ -151,17 +135,17 @@ export function Hero() {
               className="mb-12 flex flex-wrap items-center gap-4"
             >
               <Magnetic strength={0.3}>
-                <ShimmerButton
-                  shimmerColor="#A7F3D0"
-                  background="linear-gradient(135deg, hsl(176 72% 38%), hsl(168 70% 50%))"
-                  className="font-semibold shadow-glow"
+                <Button
+                  size="lg"
+                  className="group rounded-full bg-primary px-8 font-semibold text-primary-foreground shadow-soft transition-all duration-300 hover:bg-primary-dark hover:shadow-elevated"
                   onClick={() => document.getElementById("productos")?.scrollIntoView({ behavior: "smooth" })}
                 >
-                  <span className="flex items-center gap-2">
-                    Ver Productos
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </span>
-                </ShimmerButton>
+                  Ver Productos
+                  <ArrowRight
+                    className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  />
+                </Button>
               </Magnetic>
               <Button
                 variant="heroOutline"
@@ -183,7 +167,7 @@ export function Hero() {
                 const { value, suffix } = splitStat(stat.value);
                 return (
                   <div key={stat.label} className="transition-transform duration-300 hover:-translate-y-1">
-                    <p className="text-3xl font-bold text-foreground text-glow">
+                    <p className="text-3xl font-bold text-foreground">
                       <NumberTicker value={value} className="text-foreground" />
                       {suffix}
                     </p>
@@ -202,13 +186,13 @@ export function Hero() {
             style={{ perspective: 1000 }}
           >
             <div
-              className="absolute -top-4 right-8 z-20 animate-float rounded-full glass p-3 shadow-glow lg:right-16"
+              className="absolute -top-4 right-8 z-20 animate-float rounded-full glass p-3 shadow-halo lg:right-16"
               aria-hidden="true"
             >
               <Sparkles className="h-8 w-8 text-accent" aria-hidden="true" />
             </div>
             <div
-              className="absolute bottom-32 -left-4 z-20 animate-float-delayed rounded-full glass p-3 shadow-glow-aqua"
+              className="absolute bottom-32 -left-4 z-20 animate-float-delayed rounded-full glass p-3 shadow-halo-aqua"
               aria-hidden="true"
             >
               <PawPrint className="h-8 w-8 text-aqua" aria-hidden="true" />
@@ -230,16 +214,16 @@ export function Hero() {
                   priority
                   className="h-[400px] w-full object-cover lg:h-[500px]"
                 />
-                {/* Neon rim + scanline wash so the photo sits in the dark scene */}
+                {/* Fade into the paper, plus a whisper of mint so the photo sits in the palette */}
                 <div
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent"
                   aria-hidden="true"
                 />
                 <div
-                  className="pointer-events-none absolute inset-0 mix-blend-overlay"
+                  className="pointer-events-none absolute inset-0 mix-blend-soft-light"
                   style={{
                     background:
-                      "linear-gradient(135deg, hsl(14 95% 55% / 0.25) 0%, transparent 45%, hsl(175 90% 45% / 0.2) 100%)",
+                      "linear-gradient(135deg, hsl(146 50% 78% / 0.45) 0%, transparent 50%, hsl(190 48% 80% / 0.4) 100%)",
                   }}
                   aria-hidden="true"
                 />
@@ -247,7 +231,7 @@ export function Hero() {
 
               <div
                 style={{ transform: "translateZ(45px)" }}
-                className="absolute bottom-6 left-6 right-6 rounded-2xl glass p-4 shadow-glow sm:right-auto"
+                className="absolute bottom-6 left-6 right-6 rounded-2xl glass p-4 shadow-halo sm:right-auto"
               >
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-primary/15">

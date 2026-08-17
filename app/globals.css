@@ -4,67 +4,73 @@
 
 @layer base {
   :root {
-    /* Deep-sea base — near-black with a green cast so the aqua accents read as lit metal */
-    --background: 174 42% 5%;
-    --foreground: 165 20% 96%;
+    /* Mint-cream paper. The whole design now sits on light, so the greens can be
+     * soft without disappearing — pastel needs a bright ground to read as pastel. */
+    --background: 150 33% 97%;
+    --foreground: 176 26% 20%;
 
-    --card: 176 32% 8%;
-    --card-foreground: 165 20% 96%;
+    --card: 150 40% 99%;
+    --card-foreground: 176 26% 20%;
 
-    --popover: 176 32% 8%;
-    --popover-foreground: 165 20% 96%;
+    --popover: 150 40% 99%;
+    --popover-foreground: 176 26% 20%;
 
-    /* Aquamarine — the protagonist, a polished turquoise metal */
-    --primary: 172 66% 50%;
-    --primary-light: 172 78% 66%;
-    --primary-dark: 174 82% 34%;
-    --primary-foreground: 176 60% 6%;
+    /* Sage-teal. Deep enough to carry white text and body copy; the pastel
+     * character comes from the surfaces and the -light companions below. */
+    --primary: 172 40% 34%;
+    --primary-light: 166 45% 74%;
+    --primary-dark: 176 42% 24%;
+    --primary-foreground: 150 40% 98%;
 
-    --secondary: 176 28% 12%;
-    --secondary-foreground: 165 20% 96%;
+    --secondary: 152 30% 93%;
+    --secondary-foreground: 176 26% 20%;
 
-    --muted: 176 24% 14%;
-    --muted-foreground: 168 12% 68%;
+    --muted: 150 24% 95%;
+    --muted-foreground: 175 12% 44%;
 
-    /* Pastel mint — the warm end of the green range, replaces the old gold */
-    --accent: 152 70% 68%;
-    --accent-light: 150 76% 78%;
-    --accent-foreground: 176 60% 6%;
+    /* Moss green. Mid-dark so `text-accent` stays legible; `accent-light` is the
+     * pastel fill that pairs with it. */
+    --accent: 145 36% 42%;
+    --accent-light: 144 48% 84%;
+    --accent-foreground: 150 40% 98%;
 
-    /* Cool aqua — the coldest green, used sparingly for beams and rims */
-    --aqua: 185 80% 68%;
-    --aqua-foreground: 176 60% 6%;
+    /* Muted sea-blue, the coolest note in the range. */
+    --aqua: 192 40% 42%;
+    --aqua-light: 190 46% 85%;
+    --aqua-foreground: 150 40% 98%;
 
-    /* Ink is the *light* surface, inverted from the previous design */
-    --ink: 165 20% 96%;
-    --ink-light: 165 15% 88%;
-    --ink-foreground: 174 42% 5%;
+    /* Ink is the dark contrast block (footer, quote panels) — deep sage, not black */
+    --ink: 176 30% 17%;
+    --ink-light: 176 24% 24%;
+    --ink-foreground: 150 30% 96%;
 
-    --destructive: 0 85% 62%;
+    --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 176 22% 18%;
-    --input: 176 22% 18%;
-    --ring: 172 66% 50%;
+    --border: 152 20% 88%;
+    --input: 152 20% 88%;
+    --ring: 172 40% 34%;
 
     --radius: 1.25rem;
 
-    --gradient-hero: radial-gradient(ellipse 90% 70% at 20% 0%, hsl(172 70% 34% / 0.3) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 60% at 90% 20%, hsl(152 70% 38% / 0.22) 0%, transparent 55%),
-      radial-gradient(ellipse 80% 80% at 50% 110%, hsl(185 80% 34% / 0.2) 0%, transparent 60%),
+    /* Washes of pale mint, soft green and pale sky over the paper */
+    --gradient-hero: radial-gradient(ellipse 90% 70% at 20% 0%, hsl(160 55% 85% / 0.7) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 60% at 90% 20%, hsl(142 50% 87% / 0.65) 0%, transparent 55%),
+      radial-gradient(ellipse 80% 80% at 50% 110%, hsl(190 50% 89% / 0.7) 0%, transparent 60%),
       hsl(var(--background));
-    /* Extra stops with a bright band in the middle read as brushed metal, not flat colour */
-    --gradient-primary: linear-gradient(135deg, hsl(176 72% 36%) 0%, hsl(172 70% 54%) 35%,
-      hsl(158 78% 80%) 50%, hsl(172 66% 52%) 68%, hsl(180 72% 38%) 100%);
-    --gradient-neon: linear-gradient(135deg, hsl(152 70% 68%) 0%, hsl(172 66% 52%) 45%, hsl(185 80% 68%) 100%);
-    --gradient-ink: linear-gradient(160deg, hsl(176 34% 9%) 0%, hsl(174 42% 5%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(176 32% 10%) 0%, hsl(176 34% 7%) 100%);
+    /* Read as text via bg-clip-text, so the stops stay mid-dark rather than pastel */
+    --gradient-primary: linear-gradient(135deg, hsl(178 44% 28%) 0%, hsl(168 42% 37%) 40%,
+      hsl(146 38% 44%) 72%, hsl(190 42% 36%) 100%);
+    --gradient-fresh: linear-gradient(135deg, hsl(146 40% 44%) 0%, hsl(170 42% 36%) 50%, hsl(192 42% 40%) 100%);
+    --gradient-ink: linear-gradient(160deg, hsl(176 28% 21%) 0%, hsl(176 32% 14%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(150 34% 97%) 100%);
 
-    --shadow-soft: 0 4px 24px -6px hsl(172 70% 40% / 0.28);
-    --shadow-card: 0 8px 30px -10px hsl(176 60% 2% / 0.8);
-    --shadow-elevated: 0 24px 60px -18px hsl(176 60% 2% / 0.9);
-    --shadow-glow: 0 0 0 1px hsl(172 66% 50% / 0.25), 0 0 30px -4px hsl(172 66% 50% / 0.5);
-    --shadow-glow-aqua: 0 0 0 1px hsl(185 80% 68% / 0.25), 0 0 30px -4px hsl(185 80% 68% / 0.45);
+    /* Diffuse, tinted with the deep sage instead of black so shadows stay soft */
+    --shadow-soft: 0 4px 18px -6px hsl(174 30% 30% / 0.14);
+    --shadow-card: 0 10px 30px -14px hsl(174 30% 26% / 0.18);
+    --shadow-elevated: 0 26px 60px -24px hsl(174 32% 22% / 0.26);
+    --shadow-halo: 0 0 0 1px hsl(168 32% 72% / 0.55), 0 14px 34px -14px hsl(170 38% 38% / 0.22);
+    --shadow-halo-aqua: 0 0 0 1px hsl(190 38% 76% / 0.55), 0 14px 34px -14px hsl(192 40% 40% / 0.2);
   }
 }
 
@@ -75,7 +81,7 @@
 
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
@@ -94,8 +100,8 @@
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.35);
-    color: hsl(var(--foreground));
+    background: hsl(var(--primary-light) / 0.55);
+    color: hsl(var(--primary-dark));
   }
 
   ::-webkit-scrollbar {
@@ -106,12 +112,12 @@
     background: hsl(var(--secondary));
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary) / 0.6);
+    background: hsl(var(--primary) / 0.35);
     border-radius: 999px;
     border: 2px solid hsl(var(--secondary));
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.6);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -131,8 +137,8 @@
     @apply bg-primary-gradient bg-clip-text text-transparent;
   }
 
-  .text-gradient-neon {
-    @apply bg-neon-gradient bg-clip-text text-transparent;
+  .text-gradient-fresh {
+    @apply bg-fresh-gradient bg-clip-text text-transparent;
   }
 
   .bg-hero-gradient {
@@ -147,26 +153,20 @@
     background: var(--gradient-card);
   }
 
-  /* Neon glow helpers */
-  .glow-primary {
-    box-shadow: 0 0 24px -4px hsl(var(--primary) / 0.55);
+  /* Soft haloes — the pastel replacement for the old neon glows */
+  .halo-primary {
+    box-shadow: 0 10px 28px -12px hsl(var(--primary) / 0.3);
   }
-  .glow-aqua {
-    box-shadow: 0 0 24px -4px hsl(var(--aqua) / 0.5);
-  }
-  .text-glow {
-    text-shadow: 0 0 24px hsl(var(--primary) / 0.55);
-  }
-  .text-glow-aqua {
-    text-shadow: 0 0 24px hsl(var(--aqua) / 0.5);
+  .halo-aqua {
+    box-shadow: 0 10px 28px -12px hsl(var(--aqua) / 0.28);
   }
 
-  /* Glass panel used across the futuristic sections */
+  /* Frosted white panel */
   .glass {
-    background: hsl(var(--card) / 0.55);
+    background: hsl(0 0% 100% / 0.72);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid hsl(var(--foreground) / 0.08);
+    border: 1px solid hsl(152 24% 86% / 0.9);
   }
 
   .bg-noise {
@@ -177,8 +177,8 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.35;
-    mix-blend-mode: overlay;
+    opacity: 0.18;
+    mix-blend-mode: soft-light;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
   }
 
@@ -187,14 +187,11 @@
     -webkit-mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
   }
 
-  /* Techy scan grid, replaces the old paper "craft grid" */
-  .bg-tech-grid {
-    --grid-line: hsl(var(--foreground) / 0.04);
-    --grid-line-strong: hsl(var(--foreground) / 0.07);
-    background-image: repeating-linear-gradient(0deg, var(--grid-line-strong) 0 1px, transparent 1px 64px),
-      repeating-linear-gradient(90deg, var(--grid-line-strong) 0 1px, transparent 1px 64px),
-      repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 16px),
-      repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 16px);
+  /* Soft dotted trama — reads as printed paper rather than a scan grid */
+  .bg-soft-dots {
+    background-image: radial-gradient(hsl(172 26% 62% / 0.22) 1px, transparent 1px);
+    background-size: 22px 22px;
+    background-position: 0 0;
   }
 
   .bg-vignette {
@@ -301,43 +298,6 @@
 
 /* --- Keyframes required by the MagicUI / Aceternity components --- */
 
-@keyframes meteor {
-  0% {
-    transform: rotate(var(--angle)) translateX(0);
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(var(--angle)) translateX(-500px);
-    opacity: 0;
-  }
-}
-
-@keyframes shimmer-slide {
-  to {
-    transform: translate(calc(100cqw - 100%), 0);
-  }
-}
-
-@keyframes spin-around {
-  0% {
-    transform: translateZ(0) rotate(0);
-  }
-  15%,
-  35% {
-    transform: translateZ(0) rotate(90deg);
-  }
-  65%,
-  85% {
-    transform: translateZ(0) rotate(270deg);
-  }
-  100% {
-    transform: translateZ(0) rotate(360deg);
-  }
-}
-
 @keyframes aurora {
   0% {
     background-position: 0% 50%;
@@ -376,14 +336,5 @@
   }
   to {
     transform: translateY(calc(-100% - var(--gap)));
-  }
-}
-
-@keyframes grid {
-  0% {
-    transform: translateY(-50%);
-  }
-  100% {
-    transform: translateY(0);
   }
 }

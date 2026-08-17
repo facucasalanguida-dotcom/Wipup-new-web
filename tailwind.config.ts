@@ -47,6 +47,7 @@ const config: Config = {
         },
         aqua: {
           DEFAULT: "hsl(var(--aqua))",
+          light: "hsl(var(--aqua-light))",
           foreground: "hsl(var(--aqua-foreground))",
         },
         ink: {
@@ -71,7 +72,7 @@ const config: Config = {
       backgroundImage: {
         "hero-gradient": "var(--gradient-hero)",
         "primary-gradient": "var(--gradient-primary)",
-        "neon-gradient": "var(--gradient-neon)",
+        "fresh-gradient": "var(--gradient-fresh)",
         "ink-gradient": "var(--gradient-ink)",
         "card-gradient": "var(--gradient-card)",
         shimmer:
@@ -81,8 +82,8 @@ const config: Config = {
         soft: "var(--shadow-soft)",
         card: "var(--shadow-card)",
         elevated: "var(--shadow-elevated)",
-        glow: "var(--shadow-glow)",
-        "glow-aqua": "var(--shadow-glow-aqua)",
+        halo: "var(--shadow-halo)",
+        "halo-aqua": "var(--shadow-halo-aqua)",
       },
       keyframes: {
         "accordion-down": {
@@ -117,11 +118,7 @@ const config: Config = {
         // Required by the MagicUI / Aceternity components
         marquee: "marquee var(--duration, 40s) linear infinite",
         "marquee-vertical": "marquee-vertical var(--duration, 40s) linear infinite",
-        meteor: "meteor 5s linear infinite",
-        "shimmer-slide": "shimmer-slide var(--speed) ease-in-out infinite alternate",
-        "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
         aurora: "aurora 8s ease-in-out infinite alternate",
-        grid: "grid 15s linear infinite",
       },
     },
   },

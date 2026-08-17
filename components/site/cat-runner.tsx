@@ -37,11 +37,16 @@ const DRONE_H = 30;
 const BEST_KEY = "wipup-cat-runner-best";
 
 const COLORS = {
-  primary: "#5EEAD4",
-  accent: "#6EE7B7",
-  aqua: "#14B8A6",
-  ground: "#17403C",
-  text: "#EAF6F3",
+  /** The cat is the darkest, most saturated shape so it stays the focal point on cream. */
+  primary: "#2F8C7A",
+  /** Collectibles and drones — a lighter mint that still separates from the paper. */
+  accent: "#63B98C",
+  /** Ground obstacles, a mid sage between the two. */
+  aqua: "#5FA894",
+  ground: "#BBDCCB",
+  /** Muted clay for the crash frame — still reads as "stop" without a neon red. */
+  crash: "#C97B6B",
+  text: "#2C4A44",
 };
 
 type Obstacle = { x: number; w: number; h: number; flying: boolean };
@@ -334,39 +339,41 @@ export function CatRunner() {
     /* ---------- drawing ---------- */
     function drawBackground(c: CanvasRenderingContext2D) {
       const s = g.current;
-      c.fillStyle = "#08201D";
+      c.fillStyle = "#F3FAF5";
       c.fillRect(0, 0, W, H);
 
-      // scrolling tech grid
-      c.strokeStyle = "rgba(234,246,243,0.05)";
-      c.lineWidth = 1;
-      for (let x = -((s.bgOffset | 0) % 64); x < W; x += 64) {
+      // soft rolling hills drifting slower than the ground, for depth
+      c.fillStyle = "#DCEFE3";
+      for (let i = 0; i < 5; i++) {
+        const hx = (i * 260 - s.bgOffset * 0.35) % (W + 260);
         c.beginPath();
-        c.moveTo(x, 0);
-        c.lineTo(x, GROUND_Y);
-        c.stroke();
-      }
-      for (let y = 28; y < GROUND_Y; y += 48) {
-        c.beginPath();
-        c.moveTo(0, y);
-        c.lineTo(W, y);
-        c.stroke();
+        c.arc((hx < -130 ? hx + W + 260 : hx) + 90, GROUND_Y + 26, 108, Math.PI, 0);
+        c.fill();
       }
 
-      // neon ground
-      c.save();
-      c.shadowColor = COLORS.aqua;
-      c.shadowBlur = 14;
-      c.strokeStyle = COLORS.aqua;
-      c.lineWidth = 2;
+      // drifting pastel clouds
+      c.fillStyle = "#E6F4EC";
+      for (let i = 0; i < 4; i++) {
+        const cx = (i * 245 - s.bgOffset * 0.18) % (W + 245);
+        const x = cx < -120 ? cx + W + 245 : cx;
+        const y = 44 + (i % 3) * 26;
+        c.beginPath();
+        c.arc(x, y, 17, 0, Math.PI * 2);
+        c.arc(x + 20, y - 6, 21, 0, Math.PI * 2);
+        c.arc(x + 44, y, 16, 0, Math.PI * 2);
+        c.fill();
+      }
+
+      // ground line
+      c.strokeStyle = COLORS.ground;
+      c.lineWidth = 3;
       c.beginPath();
       c.moveTo(0, GROUND_Y);
       c.lineTo(W, GROUND_Y);
       c.stroke();
-      c.restore();
 
-      // ground speckles
-      c.fillStyle = "rgba(123,232,238,0.35)";
+      // little tufts of grass scrolling past
+      c.fillStyle = "#C8E3D5";
       for (let i = 0; i < 26; i++) {
         const x = (i * 71 - s.bgOffset * 2) % W;
         c.fillRect(x < 0 ? x + W : x, GROUND_Y + 10 + (i % 3) * 9, 12, 2);
@@ -382,9 +389,7 @@ export function CatRunner() {
       const dead = s.phase === "over";
 
       c.save();
-      c.shadowColor = dead ? "#EF4444" : COLORS.primary;
-      c.shadowBlur = 16;
-      c.fillStyle = dead ? "#EF4444" : COLORS.primary;
+      c.fillStyle = dead ? COLORS.crash : COLORS.primary;
 
       const bodyH = ducking ? h * 0.82 : h * 0.6;
       const bodyY = y + h - bodyH;
@@ -417,7 +422,7 @@ export function CatRunner() {
       c.fill();
 
       // tail — swishes while running
-      c.strokeStyle = dead ? "#EF4444" : COLORS.primary;
+      c.strokeStyle = dead ? COLORS.crash : COLORS.primary;
       c.lineWidth = 5;
       c.lineCap = "round";
       const swish = Math.sin(s.t * 0.25) * 6;
@@ -443,7 +448,7 @@ export function CatRunner() {
       c.restore();
 
       // eye
-      c.fillStyle = "#08201D";
+      c.fillStyle = "#F3FAF5";
       c.beginPath();
       c.arc(headX + 4, headY - 2, 2.6, 0, Math.PI * 2);
       c.fill();
@@ -454,8 +459,6 @@ export function CatRunner() {
       for (const o of s.obstacles) {
         const oy = o.flying ? DRONE_Y : GROUND_Y - o.h;
         c.save();
-        c.shadowColor = o.flying ? COLORS.accent : COLORS.aqua;
-        c.shadowBlur = 12;
         c.fillStyle = o.flying ? COLORS.accent : COLORS.aqua;
         if (o.flying) {
           // drone: body + flapping wings
@@ -479,7 +482,7 @@ export function CatRunner() {
           c.beginPath();
           c.roundRect(o.x, oy, o.w, o.h, 5);
           c.fill();
-          c.fillStyle = "#08201D";
+          c.fillStyle = "#F3FAF5";
           c.fillRect(o.x + 5, oy + o.h * 0.35, o.w - 10, 3);
         }
         c.restore();
@@ -493,10 +496,8 @@ export function CatRunner() {
         const img = imgs[it.img];
         const bob = Math.sin((s.t + it.x) * 0.12) * 4;
         c.save();
-        c.shadowColor = COLORS.accent;
-        c.shadowBlur = 16;
         // halo
-        c.strokeStyle = "rgba(110,231,183,0.55)";
+        c.strokeStyle = "rgba(99,185,140,0.5)";
         c.lineWidth = 2;
         c.beginPath();
         c.arc(it.x, it.y + bob, it.r + 5, 0, Math.PI * 2);
@@ -521,7 +522,7 @@ export function CatRunner() {
       c.textAlign = "right";
       c.fillText(String(Math.floor(s.score)).padStart(5, "0"), W - 20, 34);
       c.textAlign = "left";
-      c.fillStyle = "rgba(234,246,243,0.55)";
+      c.fillStyle = "rgba(44,74,68,0.6)";
       c.font = "600 13px ui-sans-serif, system-ui, sans-serif";
       c.fillText(`PRODUCTOS: ${s.picked}`, 20, 33);
     }
@@ -563,18 +564,18 @@ export function CatRunner() {
 
   return (
     <section id="juego" className="relative overflow-hidden bg-background py-20 lg:py-32">
-      <div className="absolute inset-0 bg-tech-grid opacity-50" aria-hidden="true" />
+      <div className="absolute inset-0 bg-soft-dots opacity-50" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute left-1/4 top-10 h-[26rem] w-[26rem] animate-blob rounded-full bg-primary/10 blur-3xl"
+        className="pointer-events-none absolute left-1/4 top-10 h-[26rem] w-[26rem] animate-blob rounded-full bg-accent-light/45 blur-3xl"
         aria-hidden="true"
       />
 
       <div className="container relative">
         <div className="mb-10 text-center">
-          <EditorialBadge index="N°07" label="Zona de juego" tone="dark" align="center" className="mb-6" />
+          <EditorialBadge index="N°07" label="Zona de juego" align="center" className="mb-6" />
           <Reveal>
             <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-              Ayudá al gato a juntar <span className="text-gradient-neon">productos WIPuP</span>
+              Ayudá al gato a juntar <span className="text-gradient-fresh">productos WIPuP</span>
             </h2>
           </Reveal>
           <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
@@ -586,7 +587,7 @@ export function CatRunner() {
         <Reveal>
           <div
             ref={wrapRef}
-            className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-primary/25 shadow-glow"
+            className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-border shadow-card"
           >
             <canvas
               ref={canvasRef}
@@ -610,7 +611,7 @@ export function CatRunner() {
                     <p className="text-xs font-bold uppercase tracking-[0.22em] text-primary">
                       Game over
                     </p>
-                    <p className="text-4xl font-bold text-foreground text-glow">{finalScore}</p>
+                    <p className="text-4xl font-bold text-foreground">{finalScore}</p>
                     <p className="text-sm text-muted-foreground">
                       {collected} producto{collected === 1 ? "" : "s"} recolectado
                       {collected === 1 ? "" : "s"}
@@ -618,7 +619,7 @@ export function CatRunner() {
                     <button
                       type="button"
                       onClick={start}
-                      className="mt-1 inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow transition-transform duration-300 hover:scale-105"
+                      className="mt-1 inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-soft transition-transform duration-300 hover:scale-105"
                     >
                       <RotateCcw className="h-4 w-4" aria-hidden="true" />
                       Jugar de nuevo
@@ -630,7 +631,7 @@ export function CatRunner() {
                     <button
                       type="button"
                       onClick={start}
-                      className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow transition-transform duration-300 hover:scale-105"
+                      className="inline-flex cursor-pointer items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-soft transition-transform duration-300 hover:scale-105"
                     >
                       Empezar a jugar
                     </button>

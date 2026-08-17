@@ -7,7 +7,7 @@ import { TESTIMONIALS } from "@/lib/site-data";
 
 function TestimonialCard({ testimonial }: { testimonial: (typeof TESTIMONIALS)[number] }) {
   return (
-    <figure className="group relative flex w-[320px] flex-shrink-0 flex-col overflow-hidden rounded-2xl glass p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-glow sm:w-[380px]">
+    <figure className="group relative flex w-[320px] flex-shrink-0 flex-col overflow-hidden rounded-2xl glass p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-card sm:w-[380px]">
       <div
         className="pointer-events-none absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         aria-hidden="true"
@@ -36,13 +36,13 @@ export function Testimonials() {
 
   return (
     <section className="relative overflow-hidden bg-background py-20 lg:py-32">
-      <div className="absolute inset-0 bg-tech-grid opacity-60" aria-hidden="true" />
+      <div className="absolute inset-0 bg-soft-dots opacity-60" aria-hidden="true" />
 
       <div className="container relative mb-16 text-center">
-        <EditorialBadge index="N°08" label="Testimonios" tone="dark" align="center" className="mb-6" />
+        <EditorialBadge index="N°08" label="Testimonios" align="center" className="mb-6" />
         <Reveal>
           <h2 className="text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            Nuestros <span className="text-gradient-neon">clientes</span>
+            Nuestros <span className="text-gradient-fresh">clientes</span>
           </h2>
         </Reveal>
       </div>

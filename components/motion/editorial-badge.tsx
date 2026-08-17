@@ -10,8 +10,8 @@ type EditorialBadgeProps = {
   index?: string;
   label: string;
   detail?: string;
-  /** "dark" = sitting on a dark surface (the default across this site). */
-  tone?: "light" | "dark";
+  /** Which surface the badge sits on: the light "paper" ground or a dark "ink" block. */
+  surface?: "paper" | "ink";
   align?: "left" | "center";
   className?: string;
 };
@@ -20,11 +20,11 @@ export function EditorialBadge({
   index,
   label,
   detail,
-  tone = "dark",
+  surface = "paper",
   align = "left",
   className,
 }: EditorialBadgeProps) {
-  const isDark = tone === "dark";
+  const onPaper = surface === "paper";
 
   return (
     <motion.div
@@ -42,7 +42,7 @@ export function EditorialBadge({
         className={cn(
           "mt-0.5 h-9 w-px shrink-0 self-stretch",
           align === "center" && "hidden",
-          isDark ? "bg-primary/50" : "bg-background/25"
+          onPaper ? "bg-primary/40" : "bg-ink-foreground/30"
         )}
         aria-hidden="true"
       />
@@ -50,11 +50,11 @@ export function EditorialBadge({
         <p
           className={cn(
             "flex items-center gap-2 text-xs font-bold uppercase tracking-[0.22em]",
-            isDark ? "text-foreground/75" : "text-background/70"
+            onPaper ? "text-foreground/70" : "text-ink-foreground/80"
           )}
         >
           {index && (
-            <span className={isDark ? "text-primary text-glow" : "text-primary"}>{index}</span>
+            <span className={onPaper ? "text-primary" : "text-primary-light"}>{index}</span>
           )}
           {label}
         </p>
@@ -62,7 +62,7 @@ export function EditorialBadge({
           <p
             className={cn(
               "mt-1 max-w-[16rem] text-xs leading-relaxed",
-              isDark ? "text-muted-foreground" : "text-background/50"
+              onPaper ? "text-muted-foreground" : "text-ink-foreground/55"
             )}
           >
             {detail}

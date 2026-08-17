@@ -43,12 +43,13 @@ function ProductCard({ product }: { product: Product }) {
       >
         <MagicCard
           gradientSize={260}
-          gradientFrom="#2DD4BF"
-          gradientTo="#6EE7B7"
-          gradientOpacity={0.22}
-          className="overflow-hidden rounded-2xl border border-foreground/10 bg-card/70 p-0 shadow-card backdrop-blur-sm transition-shadow duration-300 hover:shadow-glow"
+          gradientColor="#DCF2E7"
+          gradientFrom="#A7DFCF"
+          gradientTo="#C9EBD5"
+          gradientOpacity={0.3}
+          className="overflow-hidden rounded-2xl border border-border bg-card p-0 shadow-card transition-shadow duration-300 hover:shadow-elevated"
         >
-          <div className="relative aspect-[4/3] overflow-hidden bg-secondary/60">
+          <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
             <Image
               src={product.image}
               alt={product.name}
@@ -70,7 +71,7 @@ function ProductCard({ product }: { product: Product }) {
                   <Badge
                     key={size}
                     variant="secondary"
-                    className="gap-1 border border-aqua/25 bg-aqua/10 text-aqua"
+                    className="gap-1 border border-aqua/20 bg-aqua-light/45 text-aqua"
                   >
                     <Ruler className="h-3 w-3" aria-hidden="true" />
                     {size}
@@ -91,19 +92,19 @@ export function Products() {
 
   return (
     <section id="productos" className="relative overflow-hidden bg-background py-20 lg:py-32">
-      <div className="absolute inset-0 bg-tech-grid opacity-60" aria-hidden="true" />
+      <div className="absolute inset-0 bg-soft-dots opacity-60" aria-hidden="true" />
       <div
-        className="pointer-events-none absolute left-1/2 top-0 h-[30rem] w-[30rem] -translate-x-1/2 animate-blob rounded-full bg-primary/10 blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-0 h-[30rem] w-[30rem] -translate-x-1/2 animate-blob rounded-full bg-primary-light/35 blur-3xl"
         aria-hidden="true"
       />
 
       <div className="container relative">
         <div className="mb-16 text-center">
-          <EditorialBadge index="N°04" label="Nuestros productos" tone="dark" align="center" className="mb-6" />
+          <EditorialBadge index="N°04" label="Nuestros productos" align="center" className="mb-6" />
           <Reveal>
             <h2 className="text-4xl font-bold leading-[1.02] text-foreground sm:text-5xl lg:text-6xl">
               Una línea completa para el{" "}
-              <span className="text-gradient-neon">bienestar</span> de tu mascota
+              <span className="text-gradient-fresh">bienestar</span> de tu mascota
             </h2>
           </Reveal>
         </div>
@@ -119,13 +120,13 @@ export function Products() {
                 "relative isolate flex items-center gap-3 rounded-full border px-5 py-3 font-semibold transition-colors duration-300 cursor-pointer",
                 category.id === activeId
                   ? "border-primary text-primary-foreground"
-                  : "border-foreground/15 bg-card/60 text-foreground backdrop-blur-sm hover:border-primary/60 hover:text-primary"
+                  : "border-border bg-card text-foreground hover:border-primary/50 hover:bg-accent-light/40 hover:text-primary"
               )}
             >
               {category.id === activeId && (
                 <motion.span
                   layoutId="active-category-pill"
-                  className="absolute inset-0 -z-10 rounded-full bg-primary shadow-glow"
+                  className="absolute inset-0 -z-10 rounded-full bg-primary shadow-soft"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -151,14 +152,14 @@ export function Products() {
             transition={{ duration: 0.35 }}
           >
             <div className="relative mb-10 overflow-hidden rounded-3xl glass p-6 shadow-card sm:p-8">
-              <div className="absolute inset-0 bg-tech-grid opacity-50" aria-hidden="true" />
+              <div className="absolute inset-0 bg-soft-dots opacity-50" aria-hidden="true" />
               <div className="relative flex flex-col items-start gap-4 sm:flex-row sm:items-center">
                 <Image
                   src={active.categoryImage}
                   alt=""
                   width={64}
                   height={64}
-                  className="h-16 w-16 flex-shrink-0 object-contain drop-shadow-[0_0_18px_rgba(45,212,191,0.45)]"
+                  className="h-16 w-16 flex-shrink-0 object-contain drop-shadow-[0_8px_14px_rgba(47,125,111,0.2)]"
                   aria-hidden="true"
                 />
                 <div>
@@ -188,7 +189,7 @@ export function Products() {
             variant="hero"
             size="lg"
             asChild
-            className="shadow-glow transition-transform duration-300 hover:scale-105"
+            className="shadow-soft transition-transform duration-300 hover:scale-105"
           >
             <a href="/catalogo-wipup-2025.pdf" download="Catalogo_WIPUP_2025.pdf">
               <Download className="h-5 w-5" aria-hidden="true" />
